@@ -660,7 +660,9 @@ Maximal EUR amount to spend (*1e5)
 >`trade_id` int
 ```
 Id of the trade
->```
+```
+The field described above is optional, if this field isn't specified, this call will return the last 1000 trades.
+>
 
 ###Response
 
