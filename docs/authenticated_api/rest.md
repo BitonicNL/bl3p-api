@@ -262,7 +262,7 @@ Id of trade.
 <market>/money/depth/full
 >```
 
-###Parameters
+###Request
 
 >```
 There are no specific parameters required for this call.
@@ -325,7 +325,7 @@ Count of orders at this price.
 GENMKT/money/wallet/history
 >```
 
-###Parameters
+###Request
 
 >`currency` string
 ```
@@ -453,7 +453,7 @@ Fee incurred by the regarding trade
 <market>/money/new_deposit_address
 >```
 
-###Parameters
+###Request
 
 >```
 There are no specific parameters required for this call.
@@ -474,7 +474,7 @@ Deposit address for the market leading currency
 <market>/money/deposit_address
 >```
 
-###Parameters
+###Request
 
 >```
 There are no specific parameters required for this call.
@@ -495,7 +495,7 @@ Deposit address for the market leading currency
 <market>/money/withdraw
 >```
 
-###Parameters
+###Request
 >`account_id` string
 ```
 IBAN account-id (that is available within the regarding BL3P account)
@@ -655,7 +655,7 @@ Maximal EUR amount to spend (*1e5)
 <market>/money/trades/fetch
 >```
 
-###Parameters
+###Request
 
 >`trade_id` int
 ```

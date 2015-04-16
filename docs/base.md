@@ -64,10 +64,7 @@ You also need to sign the Rest-Key. This variable needs to contain the following
 base64 encode of (
 	HMAC_SHA512 of (
 		$path_of_request + null terminator + $post_data_string
-		base64 decode of (
-			$private_api_key
-		)
-	)
+	) with the key set to the base64 decode of the private apikey)
 )
 ```
 Note: That the HMAC_SHA512 needs to output raw binary data, using hexits (hexadecimal digits) will return an error.
