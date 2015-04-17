@@ -1,10 +1,11 @@
-#BL3P NodeJS module
+# BL3P NodeJS module
 
 ## Table of contents
 
 1. Introduction
 
-  1. Example
+  1. Installation
+  2. Example code
 
 2. Basic functions
 
@@ -32,7 +33,18 @@
 This document describes the usage of BL3P NodeJS module.
 If you don't have an API-key you can signup and create one at https://bl3p.eu.
 
-## 1.1 - Example code
+## 1.1 - Installation
+
+The BL3P nodejs library is available within Node Package Manager.
+
+https://www.npmjs.com/package/bl3p
+
+To install, navigate into your nodejs project directory and run the defined command below in your command-line:
+```
+npm install bl3p
+```
+
+## 1.2 - Example code
 
 ```javascript
 var BL3P = require('bl3p');

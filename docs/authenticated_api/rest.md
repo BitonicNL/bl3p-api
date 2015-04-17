@@ -89,19 +89,19 @@ ___
 ```
 Amount BTC, amount LTC (*1e8)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `price_int` int
 ```
 Limit price in EUR (*1e5)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `amount_funds_int` int
 ```
 Maximal EUR amount to spend (*1e5)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `fee_currency` string
 ```
@@ -178,13 +178,13 @@ ___
 ```
 Total order amount of BTC or LTC.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `price` amountObj
 ```
 Order limit price.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `status` string
 ```
@@ -215,7 +215,7 @@ ___
 ```
 Average cost of executed trades.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `trades` array
 ```
@@ -336,31 +336,31 @@ ___
 ```
 Page number. (1 = most recent transactions)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `date_from` timestamp
 ```
 Filter the result by an Unix-timestamp. Transactions before this date will not be returned.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `date_to` timestamp
 ```
 Filter the result by an Unix-timestamp. Transactions after this date will not be returned.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `type` string
 ```
 Filter the result by type. (Can be: ‘trade’, ‘fee’, ‘deposit’, ‘withdraw’)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `recs_per_page` int
 ```
 Number of records per page.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 >___
 
 ###Response
@@ -408,13 +408,13 @@ ___
 ```
 Price of the executed trade.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `order_id` int
 ```
 Id of the order.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `type` string
 ```
@@ -430,13 +430,13 @@ ___
 ```
 Id of the trade.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `contra_amount` amountObj
 ```
 Contra amount of the trade.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `fee` amountObj
 ```
@@ -621,7 +621,7 @@ ___
 ```
 Total order amount of BTC or LTC.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `amount_funds_executed` amountObj
 ```
@@ -637,13 +637,13 @@ ___
 ```
 Order limit price.
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 ___
 `amount_funds` amountObj
 ```
 Maximal EUR amount to spend (*1e5)
 ```
-<span style="font-size: 12px">The field described above is optional</span>
+The field described above is optional
 >>
 >___
 
