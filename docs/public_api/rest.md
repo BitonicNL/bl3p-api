@@ -20,7 +20,7 @@ If you would like to know how to make a connection to the BL3P API, please check
 
 **Definition of the path variable:**
 ```
-/<market>
+/<version>/<market>/<callname>
 ```
 ___
 **Description of the path variable:**
@@ -31,9 +31,26 @@ Market that the call will be applied to.
 ```
 <market> = ‘BTCEUR’, 'LTCEUR'
 ```
+
+Version of API (is currently: 1)
+```text
+<version> = 1
+```
+
+___
+Name of call (for example: “trades”)
+```text
+<callname> = $callname
+```
 ___
 
 ## 2.1 - Ticker
+
+###Call
+
+>```text
+ticker
+>```
 
 ###Request
 
@@ -81,6 +98,12 @@ Volume of the last 30 days.
 >___
 
 ## 2.2 - Orderbook
+
+###Call
+
+>```text
+orderbook
+>```
 
 ###Request
 
@@ -136,6 +159,12 @@ Count of orders at this price.
 >___
 
 ## 2.3 - Last 1000 trades
+
+###Call
+
+>```text
+trades
+>```
 
 ###Request
 

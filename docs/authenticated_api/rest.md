@@ -76,7 +76,7 @@ In case of an error, an error code will be retuned. The possible error codes are
 ###Call
 
 >```text
-<market>/money/order/add
+money/order/add
 >```
 
 ###Request
@@ -120,7 +120,7 @@ The id of the order.
 ###Call
 
 >```text
-<market>/money/order/cancel
+money/order/cancel
 >```
 
 ###Request
@@ -139,7 +139,7 @@ the result of the call which contains: 'success' or 'failed' and a optional erro
 ## 2.3 - Get a specific order
 ###Call
 >```text
-<market>/money/order/result
+money/order/result
 >```
 
 ###Request
@@ -259,7 +259,7 @@ Id of trade.
 ###Call
 
 >```text
-<market>/money/depth/full
+money/depth/full
 >```
 
 ###Request
@@ -450,7 +450,7 @@ Fee incurred by the regarding trade
 ###Call
 
 >```text
-<market>/money/new_deposit_address
+money/new_deposit_address
 >```
 
 ###Request
@@ -471,7 +471,7 @@ Deposit address for the market leading currency
 ###Call
 
 >```text
-<market>/money/deposit_address
+money/deposit_address
 >```
 
 ###Request
@@ -492,7 +492,7 @@ Deposit address for the market leading currency
 ###Call
 
 >```text
-<market>/money/withdraw
+money/withdraw
 >```
 
 ###Request
@@ -523,7 +523,7 @@ Id of the withdrawal
 ###Call
 
 >```text
-<market>/money/info
+money/info
 >```
 
 ###Request
@@ -565,7 +565,7 @@ Available in this wallet.
 ##3.6 Get active orders
 ###Call
 >```text
-<market>/money/orders
+money/orders
 >```
 
 ###Request
@@ -652,7 +652,7 @@ The field described above is optional
 ###Call
 
 >```text
-<market>/money/trades/fetch
+money/trades/fetch
 >```
 
 ###Request

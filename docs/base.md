@@ -41,7 +41,7 @@ wss://api.bl3p.eu/
 ```
 **REST**
 ```
-https://bl3p.eu/ticker/
+https://api.bl3p.eu
 ```
 ___
 

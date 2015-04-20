@@ -18,7 +18,7 @@ If you would like to know how to make a connection to the BL3P API, please check
 
 **Definition of the path variables:**
 ```
-/<version>/<market>/<ticker>
+/<version>/<market>/<channel>
 ```
 ___
 **Description of the path variables:**
@@ -34,9 +34,9 @@ Market that the call will be applied to.
 <market> = ‘BTCEUR’, 'LTCEUR'
 ```
 ___
-Stream to subscribe to.
+Channel to subscribe to.
 ```
-<ticker> = $stream_name
+<channel> = $channel_name
 ```
 ___
 
