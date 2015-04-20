@@ -37,7 +37,7 @@ ___
 
 **Websocket**
 ```
-wss://api.bl3p.eu/Ticker/
+wss://api.bl3p.eu/
 ```
 **REST**
 ```
