@@ -523,7 +523,7 @@ Id of the withdrawal
 ###Call
 
 >```text
-money/info
+GENMKT/money/info
 >```
 
 ###Request
