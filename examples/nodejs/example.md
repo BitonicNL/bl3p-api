@@ -13,6 +13,8 @@
   2. Cancel an order
   3. Get a specific order
   4. Get the whole orderbook
+  5. Live trade stream
+  6. Live orderbook stream
 
 3. Account info & functions
 
@@ -47,18 +49,34 @@ npm install bl3p
 ## 1.2 - Example code
 
 ```javascript
-var BL3P = require('bl3p');
+var bl3p = require('bl3p');
 var public_key = 'YOUR_PUBLIC_KEY';
 var private_key = 'YOUR_PRIVATE_KEY';
 
-var bl3p = new BL3P(public_key, private_key);
+var bl3p_auth = new bl3p.Bl3pAuth(public_key, private_key);
 
-bl3p.account_info(function(error, data){
-	if(data){
-		console.log(data);
-	}else{
-		console.log(error);
-	}
+bl3p_auth.account_info(function(error, data){
+  if(data){
+    console.log(data);
+  }else{
+    console.log(error);
+  }
+});
+
+bl3p.trades(function(error, data){
+  if(data){
+    console.log(data);
+  }else{
+    console.log(error);
+  }
+});
+
+bl3p.orderbook(function(error, data){
+  if(data){
+    console.log(data);
+  }else{
+    console.log(error);
+  }
 });
 ```
 
@@ -263,6 +281,87 @@ full_depth(callback)
 
 >```
 There are no specific parameters required for this call.
+>```
+
+###Response
+>`asks` array
+```
+Array of asks that are in the orderbook.
+```
+**Each array item of 'asks' will contain:**
+
+>>`amount_int` int
+```
+Amount BTC, amount LTC (*1e8)
+```
+___
+`price_int` int
+```
+Limit price in EUR (*1e5)
+```
+___
+`count` int
+```
+Count of orders at this price.
+```
+>>
+>___
+
+>`bids` array
+```
+Array of bids that are in the orderbook.
+```
+**Each array item of 'bids' will contain:**
+
+>>`amount_int` int
+```
+Amount BTC, amount LTC (*1e8)
+```
+___
+`price_int` int
+```
+Limit price in EUR (*1e5)
+```
+___
+`count` int
+```
+Count of orders at this price.
+```
+>>
+>___
+
+## 2.5 - Live trade stream
+
+### Method
+
+>```text
+trades(callback)
+>```
+
+### Response
+
+>`amount_int` int
+```
+Traded BTC Amount or  traded LTC amount (*1e8)
+```
+___
+`price_int` int
+```
+Trade price in EUR (*1e5)
+```
+___
+`date` timestamp
+```
+The time of the trade execution.
+>```
+___
+
+## 2.6 - Live orderbook stream
+
+### Method
+
+>```text
+orderbook(callback)
 >```
 
 ###Response
