@@ -188,7 +188,7 @@ The field described above is optional
 ___
 `status` string
 ```
-Status of the order. (Can be: 'pending’, ‘open’, ‘closed’, ‘cancelled’)
+Status of the order. (Can be: ’pending’, ‘open’, ‘closed’, ‘cancelled’, ’placed’)
 ```
 ___
 `date` timestamp
@@ -609,7 +609,7 @@ Type of order. (Can be: 'bid', 'ask')
 ___
 `status` string
 ```
-Status of the order. (Can be: 'pending’, ‘open’, ‘closed’, ‘cancelled’)
+Status of the order. (Can be: 'pending’, ‘open’, ‘closed’, ‘cancelled’, ’placed’)
 ```
 ___
 `date` timestamp
