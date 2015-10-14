@@ -101,7 +101,7 @@ class Bl3pApi {
  * ===================================================
  **/
 
-$url = "https://api.bl3p.eu";
+$url = "https://api.bl3p.eu/1/";
 $pubkey = "YOUR_PUBLIC_API_KEY";
 $privkey = "YOUR_PRIVATE_API_KEY";
 
