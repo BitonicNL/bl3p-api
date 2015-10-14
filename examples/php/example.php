@@ -112,7 +112,7 @@ try {
 
 	//Add an buy order for 0.01 @400 euro
 
-	$result = addOrder('bid', 1000, 40000000);
+	$result = addOrder('bid', 1000000, 40000000);
 
 	echo '<tt><pre>'.var_export($result, true) . '</pre></tt>';
 } catch (Exception $ex) {
@@ -123,7 +123,7 @@ try {
  * Add order to your account.
  * @method addOrder
  * @param  string   $order_type    	'bid' or 'ask'
- * @param  int   	$order_amount 	Amount to order *1e5
+ * @param  int   	$order_amount 	Amount to order *1e8
  * @param  int   	$order_price  	Price of order *1e5
  * @return array 					Result of the add order call
  */
