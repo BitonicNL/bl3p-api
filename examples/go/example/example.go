@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"projects/bl3pgo/bl3p"
 	"time"
+
+	"github.com/BitonicNL/bl3p-api/examples/go"
 )
 
 func main() {

@@ -12,7 +12,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/BitonicNL/bl3p-api/tree/master/examples/go/bl3p/callModels"
+	"github.com/BitonicNL/bl3p-api/examples/go/callModels"
 )
 
 //api | Variable points to freshly created NewBl3p instance
