@@ -83,6 +83,68 @@ class Bl3pApi:
 
 		return json.loads(buffer.getvalue())
 
+	# Add order to your account.
+	# @method addOrder
+	# @param  order_type   	'bid' or 'ask'
+	# @param  order_amount 	Amount to order *1e8 (so 1 bitcoin is 100000000)
+	# @param  order_price  	Price of order *1e5 (1 euro is 100000)
+	# @return Result of the add order call
+	def addOrder(self, order_type, order_amount, order_price):
+
+		params = {
+			'type' : order_type,
+			'amount_int' : order_amount,
+			'price_int' : order_price,
+			'fee_currency' : 'BTC'
+			}
+
+		return self.apiCall('BTCEUR/money/order/add', params)
+
+	# Cancel a specific order.
+	# @method cancelOrder
+	# @param  order_id 	Id of the order
+	# @return Direct resulf of the '<market>/money/order/cancel' call
+	def cancelOrder(self, order_id):
+		params = { 'order_id' : order_id }
+
+		return self.apiCall("BTCEUR/money/order/cancel", params)
+
+	# Fetch information about an specific order
+	# @method orderInfo
+	# @param  order_id 	Id of the order
+	# @return Direct resulf of the '<market>/money/order/result' call
+	def orderInfo(self, order_id):
+		params = { 'order_id' : order_id }
+
+		return self.apiCall("BTCEUR/money/order/result", params)
+
+	# Fetch complete orderbook
+	# @method fullDepth
+	# @return Direct resulf of the '<market>/money/depth/full' call
+	def fullDepth(self):
+		return self.apiCall("BTCEUR/money/depth/full", { })
+
+	# Get new deposit address.
+	# @method getNewDepositAddress
+	# @return new deposit address
+	def getNewDepositAddress(self):
+		return self.apiCall("BTCEUR/money/new_deposit_address", { })
+
+	# Get the most recent generated deposit address
+	# @method getLastDepositAddress
+	# @return most recent generated deposit address
+	def getLastDepositAddress(self):
+		return self.apiCall("BTCEUR/money/deposit_address", { })
+
+	# Get the last 1000 trades that where executed before an specific trade_id
+	# @method fetchTrades
+	# @param  trade_id    id of the trade
+	# @return array of last 1000 executed trades.
+	def fetchLast1000Trades(self, trade_id):
+		params = { 'trade_id' : trade_id }
+
+		return self.apiCall("BTCEUR/money/trades/fetch", params)
+
 	# Get the transaction history
 	# @method walletHistory
 	# @param  currency  currency which currency
@@ -92,6 +154,12 @@ class Bl3pApi:
 		params = { 'currency' : currency, 'recs_per_page' : n }
 
 		return self.apiCall('GENMKT/money/wallet/history', params)
+
+	# Get all open orders.
+	# @method getAllActiveOrders
+	# @return array of open orders
+	def getAllActiveOrders(self):
+		return self.apiCall("BTCEUR/money/orders", { });
 
 # example:
 
