@@ -83,6 +83,21 @@ class Bl3pApi:
 
 		return json.loads(buffer.getvalue())
 
-b = Bl3pApi('https://api.bl3p.eu/1/', '01234567', '76543210')
-params = { 'appel' : 'flap', 'vis' : 'soep' }
-print json.dumps(b.apiCall('blarp.php', params))
+	# Get the transaction history
+	# @method walletHistory
+	# @param  currency  currency which currency
+	# @param  n         how many to retrieve
+	# @return array   json structure with the transaction history
+	def walletHistory(self, currency, n):
+		params = { 'currency' : currency, 'recs_per_page' : n }
+
+		return self.apiCall('GENMKT/money/wallet/history', params)
+
+# example:
+
+public_key = 'YOUR PUBLIC KEY' # ........-....-....-....-............
+secret_key = 'YOUR SECRET KEY' # (long string with a-z/A-Z/0-9 and =)
+
+b = Bl3pApi('https://api.bl3p.eu/1/', public_key, secret_key)
+
+print json.dumps(b.walletHistory('BTC', 10))
