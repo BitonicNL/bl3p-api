@@ -86,6 +86,8 @@ class Bl3pApi:
 	# Add order to your account.
 	# @method addOrder
 	# @param  order_type   	'bid' or 'ask'
+	#                       bid: used if you want to buy bitcoins
+	#                       ask: if you want to sell bitcoins
 	# @param  order_amount 	Amount to order *1e8 (so 1 bitcoin is 100000000)
 	# @param  order_price  	Price of order *1e5 (1 euro is 100000)
 	# @return Result of the add order call
