@@ -163,6 +163,13 @@ class Bl3pApi:
 	def getAllActiveOrders(self):
 		return self.apiCall("BTCEUR/money/orders", { });
 
+	# Get the balances
+	# @method getBalances
+	# @return array   json structure with the wallet balances
+	def getBalances(self):
+		params = { }
+		return self.apiCall('GENMKT/money/info', params)
+        
 # example:
 
 public_key = 'YOUR PUBLIC KEY' # ........-....-....-....-............
