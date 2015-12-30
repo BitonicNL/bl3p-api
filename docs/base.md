@@ -28,7 +28,7 @@ The base urls for the two different APIs are as following:
 
 ###Authenticated API
 
-**REST**
+**HTTP**
 ```
 https://api.bl3p.eu
 ```
@@ -39,7 +39,7 @@ ___
 ```
 wss://api.bl3p.eu/
 ```
-**REST**
+**HTTP**
 ```
 https://api.bl3p.eu
 ```
