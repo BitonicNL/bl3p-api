@@ -1,4 +1,4 @@
-# Public API | REST Calls
+# Public API | HTTP Calls
 
 ## Table of contents
 
@@ -11,7 +11,7 @@
 
 ## 1 - Introduction
 
-This document describes the usage of the public REST API of BL3P.
+This document describes the usage of the public HTTP API of BL3P.
 In the file on directory above you can find the base.md file.
 The base.md document describes all basic details that you need to know to use the BL3P API.
 If you would like to know how to make a connection to the BL3P API, please check the examples that are available one directory above.
