@@ -500,6 +500,10 @@ money/withdraw
 ```
 IBAN account-id (that is available within the regarding BL3P account)
 >```
+>`account_name` string
+```
+IBAN account-name (should match your account verification)
+>```
 **or**
 
 >`address` string
