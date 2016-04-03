@@ -1,4 +1,4 @@
-#! /usr/bin/pyton
+#! /usr/bin/python
 
 # this code was written by folkert@vanheusden.com
 # it has been released under AGPL v3.0
@@ -7,17 +7,21 @@
 # in debian this can be found in the 'python-pycurl' package
 
 import base64
-try:
-    from io import BytesIO
-except ImportError:
-    from StringIO import StringIO as BytesIO
-from datetime import datetime
+import ConfigParser
 import hashlib
 import hmac
 import json
 import pycurl
-from time import mktime
+import sys
 import urllib
+
+try:
+    from io import BytesIO
+except ImportError:
+    from StringIO import StringIO as BytesIO
+
+from datetime import datetime
+from time import mktime
 
 class Bl3pApi:
 	url = None
@@ -83,15 +87,23 @@ class Bl3pApi:
 
 		return json.loads(buffer.getvalue())
 
+	# multiply the btc value (e.g 1.3BTC) with this and round-up/down
+	def getBtcMultiplier(self):
+		return 100000000
+
+	def getEurMutiplier(self):
+		return 100000
+
 	# Add order to your account.
 	# @method addOrder
+	# @param  market        'EUR'
 	# @param  order_type   	'bid' or 'ask'
 	#                       bid: used if you want to buy bitcoins
 	#                       ask: if you want to sell bitcoins
 	# @param  order_amount 	Amount to order *1e8 (so 1 bitcoin is 100000000)
 	# @param  order_price  	Price of order *1e5 (1 euro is 100000)
 	# @return Result of the add order call
-	def addOrder(self, order_type, order_amount, order_price):
+	def addOrder(self, market, order_type, order_amount, order_price):
 
 		params = {
 			'type' : order_type,
@@ -100,52 +112,58 @@ class Bl3pApi:
 			'fee_currency' : 'BTC'
 			}
 
-		return self.apiCall('BTCEUR/money/order/add', params)
+		return self.apiCall('%sEUR/money/order/add' % market, params)
 
 	# Cancel a specific order.
 	# @method cancelOrder
+	# @param  market        'EUR'
 	# @param  order_id 	Id of the order
 	# @return Direct resulf of the '<market>/money/order/cancel' call
-	def cancelOrder(self, order_id):
+	def cancelOrder(self, market, order_id):
 		params = { 'order_id' : order_id }
 
-		return self.apiCall("BTCEUR/money/order/cancel", params)
+		return self.apiCall("%sEUR/money/order/cancel" % market, params)
 
 	# Fetch information about an specific order
 	# @method orderInfo
+	# @param  market        'EUR'
 	# @param  order_id 	Id of the order
 	# @return Direct resulf of the '<market>/money/order/result' call
-	def orderInfo(self, order_id):
+	def orderInfo(self, market, order_id):
 		params = { 'order_id' : order_id }
 
-		return self.apiCall("BTCEUR/money/order/result", params)
+		return self.apiCall("%sEUR/money/order/result" % market, params)
 
 	# Fetch complete orderbook
 	# @method fullDepth
+	# @param  market        'EUR'
 	# @return Direct resulf of the '<market>/money/depth/full' call
-	def fullDepth(self):
-		return self.apiCall("BTCEUR/money/depth/full", { })
+	def fullDepth(self, market):
+		return self.apiCall("%sEUR/money/depth/full" % market, { })
 
 	# Get new deposit address.
 	# @method getNewDepositAddress
+	# @param  market        'EUR'
 	# @return new deposit address
-	def getNewDepositAddress(self):
-		return self.apiCall("BTCEUR/money/new_deposit_address", { })
+	def getNewDepositAddress(self, market):
+		return self.apiCall("%sEUR/money/new_deposit_address" % market, { })
 
 	# Get the most recent generated deposit address
 	# @method getLastDepositAddress
+	# @param  market        'EUR'
 	# @return most recent generated deposit address
-	def getLastDepositAddress(self):
-		return self.apiCall("BTCEUR/money/deposit_address", { })
+	def getLastDepositAddress(self, market):
+		return self.apiCall("%sEUR/money/deposit_address" % market, { })
 
 	# Get the last 1000 trades that where executed before an specific trade_id
 	# @method fetchTrades
+	# @param  market        'EUR'
 	# @param  trade_id    id of the trade
 	# @return array of last 1000 executed trades.
-	def fetchLast1000Trades(self, trade_id):
+	def fetchLast1000Trades(self, market, trade_id):
 		params = { 'trade_id' : trade_id }
 
-		return self.apiCall("BTCEUR/money/trades/fetch", params)
+		return self.apiCall("%sEUR/money/trades/fetch" % market, params)
 
 	# Get the transaction history
 	# @method walletHistory
@@ -159,9 +177,10 @@ class Bl3pApi:
 
 	# Get all open orders.
 	# @method getAllActiveOrders
+	# @param  market        'EUR'
 	# @return array of open orders
-	def getAllActiveOrders(self):
-		return self.apiCall("BTCEUR/money/orders", { });
+	def getAllActiveOrders(self, market):
+		return self.apiCall("%sEUR/money/orders" % market, { });
 
 	# Get the balances
 	# @method getBalances
@@ -170,11 +189,20 @@ class Bl3pApi:
 		params = { }
 		return self.apiCall('GENMKT/money/info', params)
         
-# example:
+def d(j):
+	print json.dumps(j, sort_keys=True, indent=4, separators=(',', ': '))
 
-public_key = 'YOUR PUBLIC KEY' # ........-....-....-....-............
-secret_key = 'YOUR SECRET KEY' # (long string with a-z/A-Z/0-9 and =)
+# example:
+config = ConfigParser.RawConfigParser()
+
+if len(sys.argv) == 2:
+	config.read(sys.argv[1])
+else:
+	config.read('example.cfg')
+
+public_key = config.get('bl3p', 'public_key') # ........-....-....-....-............
+secret_key = config.get('bl3p', 'secret_key') # (long string with a-z/A-Z/0-9 and =)
 
 b = Bl3pApi('https://api.bl3p.eu/1/', public_key, secret_key)
 
-print json.dumps(b.walletHistory('BTC', 10))
+d(b.walletHistory('BTC', 10))
