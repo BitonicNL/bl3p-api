@@ -336,31 +336,31 @@ ___
 ```
 Page number. (1 = most recent transactions)
 ```
-The field described above is optional
+The field described above is optional, default is 1
 ___
 `date_from` timestamp
 ```
 Filter the result by an Unix-timestamp. Transactions before this date will not be returned.
 ```
-The field described above is optional
+The field described above is optional, default is no filter
 ___
 `date_to` timestamp
 ```
 Filter the result by an Unix-timestamp. Transactions after this date will not be returned.
 ```
-The field described above is optional
+The field described above is optional, default is no filter
 ___
 `type` string
 ```
 Filter the result by type. (Can be: ‘trade’, ‘fee’, ‘deposit’, ‘withdraw’)
 ```
-The field described above is optional
+The field described above is optional, default is no filter
 ___
 `recs_per_page` int
 ```
 Number of records per page.
 ```
-The field described above is optional
+The field described above is optional, default is 50
 >___
 
 ###Response
@@ -408,13 +408,13 @@ ___
 ```
 Price of the executed trade.
 ```
-The field described above is optional
+The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ___
 `order_id` int
 ```
 Id of the order.
 ```
-The field described above is optional
+The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ___
 `type` string
 ```
@@ -430,17 +430,19 @@ ___
 ```
 Id of the trade.
 ```
-The field described above is optional
+The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ___
 `contra_amount` amountObj
 ```
 Contra amount of the trade.
 ```
-The field described above is optional
+The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ___
 `fee` amountObj
 ```
 Fee incurred by the regarding trade
+```
+The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ```
 >>
 >___
