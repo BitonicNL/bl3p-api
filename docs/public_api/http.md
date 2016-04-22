@@ -29,7 +29,7 @@ ___
 Market that the call will be applied to.
 
 ```
-<market> = ‘BTCEUR’, 'LTCEUR'
+<market> = ‘BTCEUR’
 ```
 
 Version of API (is currently: 1)
@@ -120,7 +120,7 @@ Array of asks that are in the orderbook.
 
 >>`amount_int` int
 ```
-Amount BTC, amount LTC (*1e8)
+Amount BTC (*1e8)
 ```
 ___
 `price_int` int
@@ -143,7 +143,7 @@ Array of bids that are in the orderbook.
 
 >>`amount_int` int
 ```
-Amount BTC, amount LTC (*1e8)
+Amount BTC (*1e8)
 ```
 ___
 `price_int` int
