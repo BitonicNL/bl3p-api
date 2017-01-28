@@ -452,14 +452,15 @@ The field described above is for type 'trade' only and will be omitted if recs_p
 ###Call
 
 >```text
-money/new_deposit_address
+GENMKT/money/new_deposit_address
 >```
 
 ###Request
 
->```
-There are no specific parameters required for this call.
->```
+>`currency` string
+```
+Currency of the deposit address. (Can be: 'BTC' or 'LTC')
+```
 
 ###Response
 
@@ -473,14 +474,15 @@ Deposit address for the market leading currency
 ###Call
 
 >```text
-money/deposit_address
+GENMKT/money/deposit_address
 >```
 
 ###Request
 
->```
-There are no specific parameters required for this call.
->```
+>`currency` string
+```
+Currency of the deposit address. (Can be: 'BTC' or 'LTC')
+```
 
 ###Response
 
