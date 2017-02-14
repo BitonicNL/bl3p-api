@@ -506,7 +506,7 @@ GENMKT/money/withdraw
 ```
 Currency (Can be: 'BTC','EUR')
 >```
-
+___
 >`account_id` string
 ```
 IBAN account-id (that is available within the regarding BL3P account)
@@ -534,7 +534,7 @@ Satoshis or 0,00001 EUR
 Id of the withdrawal
 >```
 
-##3.5 - Get account info & balance
+## 3.5 - Get account info & balance
 ### Call
 
 >```text
