@@ -467,7 +467,7 @@ Currency (Can be: 'BTC')
 
 >`address` string
 ```
-Deposit address for the market leading currency
+Deposit address for the requested currency
 >```
 
 ## 3.3 - Get the last deposit address
@@ -489,7 +489,7 @@ Currency (Can be: 'BTC')
 
 >`address` string
 ```
-Deposit address for the market leading currency
+Deposit address for the requested currency
 >```
 
 ## 3.4 - Create a withdrawal
