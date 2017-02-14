@@ -46,19 +46,19 @@ ___
 
 ## 2.1 - Ticker
 
-###Call
+### Call
 
 >```text
 ticker
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 
 >`currency` string
 ```
@@ -99,19 +99,19 @@ Volume of the last 30 days.
 
 ## 2.2 - Orderbook
 
-###Call
+### Call
 
 >```text
 orderbook
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 >`asks` array
 ```
 Array of asks that are in the orderbook.
@@ -160,19 +160,19 @@ Count of orders at this price.
 
 ## 2.3 - Last 1000 trades
 
-###Call
+### Call
 
 >```text
 trades
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 
 >`trades` array
 ```
@@ -184,7 +184,7 @@ Array of trades.
 Id of the trade.
 ```
 ___
-`date` timestamp
+`date` timestamp (in milliseconds)
 ```
 The time of the trade execution.
 ```

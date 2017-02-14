@@ -18,7 +18,8 @@
   4. Create a withdrawal
   5. Get account info & balance
   6. Get active orders
-  7. Get the last 1000 trades after an specific trade
+  7. Get order history
+  8. Fetch all trades on BL3P
 
 4. Appendix - Error code
 
@@ -73,13 +74,13 @@ In case of an error, an error code will be retuned. The possible error codes are
 
 ## 2.1 - Create an order
 
-###Call
+### Call
 
 >```text
-money/order/add
+<market>/money/order/add
 >```
 
-###Request
+### Request
 >`type` string
 ```
 'bid', 'ask'
@@ -109,7 +110,7 @@ Currency the fee is accounted in. Can be: 'EUR' or 'BTC'
 ```
 >___
 
-###Response
+### Response
 >`order_id` int
 ```
 The id of the order.
@@ -117,19 +118,19 @@ The id of the order.
 
 ## 2.2 - Cancel an order
 
-###Call
+### Call
 
 >```text
-money/order/cancel
+<market>/money/order/cancel
 >```
 
-###Request
+### Request
 >`order_id` int
 ```
 The id of the order that you wish to cancel.
 >```
 
-###Response
+### Response
 >```
 For this call there is no specific result returned other then
 the result of the call which contains: 'success' or 'failed' and a optional error array.
@@ -137,18 +138,18 @@ the result of the call which contains: 'success' or 'failed' and a optional erro
 
 
 ## 2.3 - Get a specific order
-###Call
+### Call
 >```text
-money/order/result
+<market>/money/order/result
 >```
 
-###Request
+### Request
 >`order_id` int
 ```
 The id of the order that you wish to retrieve.
 >```
 
-###Response
+### Response
 >`order_id` int
 ```
 Id of the order.
@@ -166,7 +167,7 @@ Currency of the order. (Is now by default 'EUR')
 ___
 `item` string
 ```
-The item that will be traded for `currency`. (Can be: 'BTC' or 'LTC')
+The item that will be traded for `currency`. (Can be: 'BTC')
 ```
 ___
 `type` string
@@ -239,7 +240,7 @@ The time of the trade execution.
 ___
 `item` string
 ```
-'BTC' or 'LTC'
+'BTC'
 ```
 ___
 `price` amountObj
@@ -256,19 +257,19 @@ Id of trade.
 
 ## 2.4 - Get the whole orderbook
 
-###Call
+### Call
 
 >```text
-money/depth/full
+<market>/money/depth/full
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 >`asks` array
 ```
 Array of asks that are in the orderbook.
@@ -319,17 +320,17 @@ Count of orders at this price.
 
 ## 3.1 - Get your transaction history
 
-###Call
+### Call
 
 >```text
 GENMKT/money/wallet/history
 >```
 
-###Request
+### Request
 
 >`currency` string
 ```
-Currency of the wallet. (Can be: 'BTC', 'EUR' or 'LTC')
+Currency of the wallet. (Can be: 'BTC', 'EUR')
 ```
 ___
 `page` int
@@ -340,13 +341,13 @@ The field described above is optional, default is 1
 ___
 `date_from` timestamp
 ```
-Filter the result by an Unix-timestamp. Transactions before this date will not be returned.
+Filter the result by a Unix-timestamp. Transactions before this date will not be returned.
 ```
 The field described above is optional, default is no filter
 ___
 `date_to` timestamp
 ```
-Filter the result by an Unix-timestamp. Transactions after this date will not be returned.
+Filter the result by a Unix-timestamp. Transactions after this date will not be returned.
 ```
 The field described above is optional, default is no filter
 ___
@@ -363,7 +364,7 @@ Number of records per page.
 The field described above is optional, default is 50
 >___
 
-###Response
+### Response
 
 >`page` int
 ```
@@ -449,19 +450,20 @@ The field described above is for type 'trade' only and will be omitted if recs_p
 
 ## 3.2 - Create a new deposit address
 
-###Call
+### Call
 
 >```text
-money/new_deposit_address
+GENMKT/money/new_deposit_address
 >```
 
-###Request
+### Request
 
->```
-There are no specific parameters required for this call.
+>`currency` string
+```
+Currency (Can be: 'BTC')
 >```
 
-###Response
+### Response
 
 >`address` string
 ```
@@ -470,19 +472,20 @@ Deposit address for the market leading currency
 
 ## 3.3 - Get the last deposit address
 
-###Call
+### Call
 
 >```text
-money/deposit_address
+GENMKT/money/deposit_address
 >```
 
-###Request
+### Request
 
->```
-There are no specific parameters required for this call.
+>`currency` string
+```
+Currency (Can be: 'BTC')
 >```
 
-###Response
+### Response
 
 >`address` string
 ```
@@ -491,13 +494,19 @@ Deposit address for the market leading currency
 
 ## 3.4 - Create a withdrawal
 
-###Call
+### Call
 
 >```text
-money/withdraw
+GENMKT/money/withdraw
 >```
 
-###Request
+### Request
+
+>`currency` string
+```
+Currency (Can be: 'BTC','EUR')
+>```
+
 >`account_id` string
 ```
 IBAN account-id (that is available within the regarding BL3P account)
@@ -518,7 +527,7 @@ ___
 Satoshis or 0,00001 EUR
 >```
 
-###Response
+### Response
 
 >`id` int
 ```
@@ -526,19 +535,19 @@ Id of the withdrawal
 >```
 
 ##3.5 - Get account info & balance
-###Call
+### Call
 
 >```text
 GENMKT/money/info
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 
 >`user_id` int
 ```
@@ -568,19 +577,19 @@ Available in this wallet.
 >>
 >___
 
-##3.6 Get active orders
-###Call
+## 3.6 Get active orders
+### Call
 >```text
-money/orders
+<market>/money/orders
 >```
 
-###Request
+### Request
 
 >```
 There are no specific parameters required for this call.
 >```
 
-###Response
+### Response
 
 >`orders` array
 ```
@@ -605,7 +614,7 @@ Currency of the order. (Is now by default 'EUR')
 ___
 `item` string
 ```
-The item that will be traded for `currency`. (Can be: 'BTC' or 'LTC')
+The item that will be traded for `currency`. (Can be: 'BTC')
 ```
 ___
 `type` string
@@ -653,24 +662,150 @@ The field described above is optional
 >>
 >___
 
-##3.7 - Get the last 1000 trades after an specific trade
-
-###Call
-
+## 3.7 Get order history
+### Call
 >```text
-money/trades/fetch
+<market>/money/orders/history
 >```
 
-###Request
+### Request
+
+>`page` int
+```
+Page number. (1 = most recent transactions)
+```
+The field described above is optional, default is 1
+___
+`date_from` timestamp
+```
+Filter the result by a Unix-timestamp. Transactions before this date will not be returned.
+```
+The field described above is optional, default is no filter
+___
+`date_to` timestamp
+```
+Filter the result by a Unix-timestamp. Transactions after this date will not be returned.
+```
+The field described above is optional, default is no filter
+___
+`recs_per_page` int
+```
+Number of records per page.
+```
+The field described above is optional, default is 100
+>___
+
+### Response
+
+>`page` int
+```
+Current page number.
+```
+___
+`records` int
+```
+Count of records in the result set.
+```
+___
+`max_page` int
+```
+___
+Number of last page.
+```
+>`orders` array
+```
+Array of active orders.
+```
+**Each array item of 'orders' will contain:**
+
+>>`order_id` int
+```
+Id of the order.
+```
+___
+`label` string
+```
+API-key label
+```
+___
+`currency` string
+```
+Currency of the order. (Is now by default 'EUR')
+```
+___
+`item` string
+```
+The item that will be traded for `currency`. (Can be: 'BTC')
+```
+___
+`type` string
+```
+Type of order. (Can be: 'bid', 'ask')
+```
+___
+`status` string
+```
+Status of the order. (Can be: 'pending’, ‘open’, ‘closed’, ‘cancelled’, ’placed’)
+```
+___
+`date` timestamp
+```
+The time the order got added.
+```
+___
+`date_closed` timestamp
+```
+The time the order got closed.
+```
+___
+`amount` amountObj
+```
+Total order amount of BTC or LTC.
+```
+The field described above is optional
+___
+`amount_funds_executed` amountObj
+```
+Amount in funds that is executed.
+```
+___
+`amount_executed` amountObj
+```
+Amount that is executed.
+```
+___
+`price` amountObj
+```
+Order limit price.
+```
+The field described above is optional
+___
+`amount_funds` amountObj
+```
+Maximal EUR amount to spend (*1e5)
+```
+The field described above is optional
+>>
+>___
+
+## 3.8 - Fetch all trades on BL3P
+
+### Call
+
+>```text
+<market>/money/trades/fetch
+>```
+
+### Request
 
 >`trade_id` int
 ```
-Id of the trade
+Id of the trade after which you want to fetch the (next) 1000 trades
 ```
 The field described above is optional, if this field isn't specified, this call will return the last 1000 trades.
 >
 
-###Response
+### Response
 
 >`trades` array
 ```
@@ -682,7 +817,7 @@ Array of trades.
 Id of the trade.
 ```
 ___
-`date` timestamp
+`date` timestamp (in milliseconds)
 ```
 The time of the trade execution.
 ```
