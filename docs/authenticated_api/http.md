@@ -77,7 +77,7 @@ In case of an error, an error code will be retuned. The possible error codes are
 ### Call
 
 >```text
-<market>/money/order/add
+&lt;market&gt;/money/order/add
 ```
 
 ### Request
