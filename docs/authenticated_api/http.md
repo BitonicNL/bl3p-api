@@ -78,7 +78,7 @@ In case of an error, an error code will be retuned. The possible error codes are
 
 >```text
 <market>/money/order/add
->```
+```
 
 ### Request
 >`type` string
