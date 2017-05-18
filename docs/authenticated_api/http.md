@@ -444,7 +444,6 @@ ___
 Fee incurred by the regarding trade
 ```
 The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
-```
 
 >___
 
