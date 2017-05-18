@@ -445,6 +445,7 @@ Fee incurred by the regarding trade
 ```
 The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 
+
 >___
 
 ## 3.2 - Create a new deposit address
@@ -514,16 +515,20 @@ IBAN account-id (that is available within the regarding BL3P account)
 ```
 IBAN account-name (should match your account verification)
 ```
+
 **or**
 
 `address` string
 ```
+The address to withdraw to
+```
 `extra_fee` int (use 1 for extra fee)
 ```
 This will send the withdrawal as priority, extra fee will be charged (see bl3p.eu)
-The field described above is optional, default is no extra fee
 ```
+The field described above is optional, default is no extra fee
 ___
+
 `amount_int` int
 ```
 Satoshis or 0,00001 EUR
@@ -705,6 +710,7 @@ The field described above is optional, default is 100
 Current page number.
 ```
 ___
+
 `records` int
 ```
 Count of records in the result set.
@@ -712,7 +718,6 @@ Count of records in the result set.
 ___
 `max_page` int
 ```
-___
 Number of last page.
 ```
 `orders` array
@@ -726,6 +731,7 @@ Array of active orders.
 Id of the order.
 ```
 ___
+
 `label` string
 ```
 API-key label
