@@ -76,12 +76,12 @@ In case of an error, an error code will be retuned. The possible error codes are
 
 ### Call
 
->```text
-&lt;market&gt;/money/order/add
+```text
+<market>/money/order/add
 ```
 
 ### Request
->`type` string
+`type` string
 ```
 'bid', 'ask'
 ```
@@ -111,46 +111,46 @@ Currency the fee is accounted in. Can be: 'EUR' or 'BTC'
 >___
 
 ### Response
->`order_id` int
+`order_id` int
 ```
 The id of the order.
->```
+```
 
 ## 2.2 - Cancel an order
 
 ### Call
 
->```text
+```text
 <market>/money/order/cancel
->```
+```
 
 ### Request
->`order_id` int
+`order_id` int
 ```
 The id of the order that you wish to cancel.
->```
+```
 
 ### Response
->```
+```
 For this call there is no specific result returned other then
 the result of the call which contains: 'success' or 'failed' and a optional error array.
->```
+```
 
 
 ## 2.3 - Get a specific order
 ### Call
->```text
+```text
 <market>/money/order/result
->```
+```
 
 ### Request
->`order_id` int
+`order_id` int
 ```
 The id of the order that you wish to retrieve.
->```
+```
 
 ### Response
->`order_id` int
+`order_id` int
 ```
 Id of the order.
 ```
@@ -223,7 +223,7 @@ ___
 Array of trades executed for the regarding order.
 ```
 **Each array item of 'trade' will contain:**
->>`amount` amountObj
+`amount` amountObj
 ```
 BTC or LTC amount.
 ```
@@ -252,31 +252,31 @@ ___
 ```
 Id of trade.
 ```
->>
+
 >___
 
 ## 2.4 - Get the whole orderbook
 
 ### Call
 
->```text
+```text
 <market>/money/depth/full
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
->`asks` array
+`asks` array
 ```
 Array of asks that are in the orderbook.
 ```
 **Each array item of 'asks' will contain:**
 
->>`amount_int` int
+`amount_int` int
 ```
 Amount BTC, amount LTC (*1e8)
 ```
@@ -290,16 +290,16 @@ ___
 ```
 Count of orders at this price.
 ```
->>
+
 >___
 
->`bids` array
+`bids` array
 ```
 Array of bids that are in the orderbook.
 ```
 **Each array item of 'bids' will contain:**
 
->>`amount_int` int
+`amount_int` int
 ```
 Amount BTC, amount LTC (*1e8)
 ```
@@ -313,7 +313,7 @@ ___
 ```
 Count of orders at this price.
 ```
->>
+
 >___
 
 ## 3 - Account info & functions
@@ -322,13 +322,13 @@ Count of orders at this price.
 
 ### Call
 
->```text
+```text
 GENMKT/money/wallet/history
 >```
 
 ### Request
 
->`currency` string
+`currency` string
 ```
 Currency of the wallet. (Can be: 'BTC', 'EUR')
 ```
@@ -366,7 +366,7 @@ The field described above is optional, default is 50
 
 ### Response
 
->`page` int
+`page` int
 ```
 Current page number.
 ```
@@ -386,7 +386,7 @@ ___
 Array of transactions.
 ```
 **Each array item of 'transactions' will contain:**
->>`transaction_id` int
+`transaction_id` int
 ```
 Id of the transaction.
 ```
@@ -445,111 +445,111 @@ Fee incurred by the regarding trade
 ```
 The field described above is for type 'trade' only and will be omitted if recs_per_page > 1000
 ```
->>
+
 >___
 
 ## 3.2 - Create a new deposit address
 
 ### Call
 
->```text
+```text
 GENMKT/money/new_deposit_address
->```
+```
 
 ### Request
 
->`currency` string
+`currency` string
 ```
 Currency (Can be: 'BTC')
->```
+```
 
 ### Response
 
->`address` string
+`address` string
 ```
 Deposit address for the requested currency
->```
+```
 
 ## 3.3 - Get the last deposit address
 
 ### Call
 
->```text
+```text
 GENMKT/money/deposit_address
->```
+```
 
 ### Request
 
->`currency` string
+`currency` string
 ```
-Currency (Can be: 'BTC')
->```
+currency (Can be: 'BTC')
+```
 
 ### Response
 
->`address` string
+`address` string
 ```
 Deposit address for the requested currency
->```
+```
 
 ## 3.4 - Create a withdrawal
 
 ### Call
 
->```text
+```text
 GENMKT/money/withdraw
->```
+```
 
 ### Request
 
->`currency` string
+`currency` string
 ```
 Currency (Can be: 'BTC','EUR')
->```
+```
 ___
->`account_id` string
+`account_id` string
 ```
 IBAN account-id (that is available within the regarding BL3P account)
->```
->`account_name` string
+```
+`account_name` string
 ```
 IBAN account-name (should match your account verification)
->```
+```
 **or**
 
->`address` string
+`address` string
 ```
 Bitcoin address
->```
+```
 ___
->`amount_int` int
+`amount_int` int
 ```
 Satoshis or 0,00001 EUR
->```
+```
 
 ### Response
 
->`id` int
+`id` int
 ```
 Id of the withdrawal
->```
+```
 
 ## 3.5 - Get account info & balance
 ### Call
 
->```text
+```text
 GENMKT/money/info
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
 
->`user_id` int
+`user_id` int
 ```
 Id of the user.
 ```
@@ -565,7 +565,7 @@ Array of wallets.
 ```
 **Each array item of 'wallets' will contain:**
 
->>`balance` amountObj
+`balance` amountObj
 ```
 Balance in this wallet
 ```
@@ -574,30 +574,30 @@ ___
 ```
 Available in this wallet.
 ```
->>
+
 >___
 
 ## 3.6 Get active orders
 ### Call
->```text
+```text
 <market>/money/orders
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
 
->`orders` array
+`orders` array
 ```
 Array of active orders.
 ```
 **Each array item of 'orders' will contain:**
 
->>`order_id` int
+`order_id` int
 ```
 Id of the order.
 ```
@@ -659,18 +659,18 @@ ___
 Maximal EUR amount to spend (*1e5)
 ```
 The field described above is optional
->>
+
 >___
 
 ## 3.7 Get order history
 ### Call
->```text
+```text
 <market>/money/orders/history
->```
+```
 
 ### Request
 
->`page` int
+`page` int
 ```
 Page number. (1 = most recent transactions)
 ```
@@ -693,11 +693,12 @@ ___
 Number of records per page.
 ```
 The field described above is optional, default is 100
+
 >___
 
 ### Response
 
->`page` int
+`page` int
 ```
 Current page number.
 ```
@@ -712,13 +713,13 @@ ___
 ___
 Number of last page.
 ```
->`orders` array
+`orders` array
 ```
 Array of active orders.
 ```
 **Each array item of 'orders' will contain:**
 
->>`order_id` int
+`order_id` int
 ```
 Id of the order.
 ```
@@ -785,34 +786,35 @@ ___
 Maximal EUR amount to spend (*1e5)
 ```
 The field described above is optional
->>
+
 >___
 
 ## 3.8 - Fetch all trades on BL3P
 
 ### Call
 
->```text
+```text
 <market>/money/trades/fetch
->```
+```
 
 ### Request
 
->`trade_id` int
+`trade_id` int
 ```
 Id of the trade after which you want to fetch the (next) 1000 trades
 ```
 The field described above is optional, if this field isn't specified, this call will return the last 1000 trades.
->
+
+>__
 
 ### Response
 
->`trades` array
+`trades` array
 ```
 Array of trades.
 ```
 **Each array item of 'trades' will contain:**
->>`trade_id` int
+`trade_id` int
 ```
 Id of the trade.
 ```
@@ -831,7 +833,7 @@ ___
 ```
 Price of the traded item in EUR. (*1e5)
 ```
->>
+
 >___
 
 ## 4 - Appendix - Error codes
