@@ -519,7 +519,10 @@ IBAN account-name (should match your account verification)
 
 `address` string
 ```
-Bitcoin address
+`extra_fee` int (use 1 for extra fee)
+```
+This will send the withdrawal as priority, extra fee will be charged (see bl3p.eu)
+The field described above is optional, default is no extra fee
 ```
 ___
 `amount_int` int
@@ -805,7 +808,7 @@ Id of the trade after which you want to fetch the (next) 1000 trades
 ```
 The field described above is optional, if this field isn't specified, this call will return the last 1000 trades.
 
->__
+>___
 
 ### Response
 
