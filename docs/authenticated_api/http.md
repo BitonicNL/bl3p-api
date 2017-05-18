@@ -324,7 +324,7 @@ Count of orders at this price.
 
 ```text
 GENMKT/money/wallet/history
->```
+```
 
 ### Request
 
