@@ -48,19 +48,19 @@ ___
 
 ### Call
 
->```text
+```text
 ticker
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
 
->`currency` string
+`currency` string
 ```
 The currency the returned values apply to.
 ```
@@ -85,7 +85,7 @@ ___
 Array of trades executed for the regarding order.
 ```
 **The 'volume' array will contain:**
->>`24h` float
+>`24h` float
 ```
 Volume of the last 24 hours.
 ```
@@ -94,22 +94,22 @@ ___
 ```
 Volume of the last 30 days.
 ```
->>
+
 >___
 
 ## 2.2 - Orderbook
 
 ### Call
 
->```text
+```text
 orderbook
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
 >`asks` array
@@ -118,7 +118,7 @@ Array of asks that are in the orderbook.
 ```
 **Each array item of 'asks' will contain:**
 
->>`amount_int` int
+>`amount_int` int
 ```
 Amount BTC (*1e8)
 ```
@@ -132,7 +132,7 @@ ___
 ```
 Count of orders at this price.
 ```
->>
+
 >___
 
 >`bids` array
@@ -141,7 +141,7 @@ Array of bids that are in the orderbook.
 ```
 **Each array item of 'bids' will contain:**
 
->>`amount_int` int
+>`amount_int` int
 ```
 Amount BTC (*1e8)
 ```
@@ -155,22 +155,22 @@ ___
 ```
 Count of orders at this price.
 ```
->>
+
 >___
 
 ## 2.3 - Last 1000 trades
 
 ### Call
 
->```text
+```text
 trades
->```
+```
 
 ### Request
 
->```
+```
 There are no specific parameters required for this call.
->```
+```
 
 ### Response
 
@@ -179,7 +179,7 @@ There are no specific parameters required for this call.
 Array of trades.
 ```
 **Each array item of 'trades' will contain:**
->>`trade_id` int
+>`trade_id` int
 ```
 Id of the trade.
 ```
@@ -198,5 +198,5 @@ ___
 ```
 Price of the traded item in EUR. (*1e5)
 ```
->>
+
 >___
