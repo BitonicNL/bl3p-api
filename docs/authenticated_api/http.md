@@ -4,22 +4,20 @@
 
 1. Introduction
 2. Basic functions
-
-  1. Create an order
-  2. Cancel an order
-  3. Get a specific order
-  4. Get the whole orderbook
+   1. Create an order
+   2. Cancel an order
+   3. Get a specific order
+   4. Get the whole orderbook
 
 3. Account info & functions
-
-  1. Get the transaction history
-  2. Create a new deposit address
-  3. Get the last deposit address
-  4. Create a withdrawal
-  5. Get account info & balance
-  6. Get active orders
-  7. Get order history
-  8. Fetch all trades on BL3P
+   1. Get the transaction history
+   2. Create a new deposit address
+   3. Get the last deposit address
+   4. Create a withdrawal
+   5. Get account info & balance
+   6. Get active orders
+   7. Get order history
+   8. Fetch all trades on BL3P
 
 4. Appendix - Error code
 
