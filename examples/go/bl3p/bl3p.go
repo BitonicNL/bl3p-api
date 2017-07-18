@@ -15,14 +15,6 @@ import (
 	"github.com/BitonicNL/bl3p-api/examples/go/callModels"
 )
 
-//api | Variable points to freshly created NewBl3p instance
-var api = NewBl3p(
-	"https://api.bl3p.eu",
-	"YOUR_API_PUBLIC_KEY",
-	"YOUR_API_PRIVATE_KEY",
-	"1",
-)
-
 //Bl3p struct
 type Bl3p struct {
 	url     string
@@ -148,14 +140,14 @@ func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pR
 }
 
 //AddOrder | Add new order to the orderbook
-func AddOrder(orderType string, orderAmount int, orderPrice int) (interface{}, error) {
+func (b Bl3p) AddOrder(orderType string, orderAmount int, orderPrice int) (interface{}, error) {
 
 	price := strconv.FormatInt(int64(orderPrice), 10)
 	amount := strconv.FormatInt(int64(orderAmount), 10)
 
 	params := map[string]string{"type": orderType, "amount_int": amount, "price_int": price, "fee_currency": "BTC"}
 
-	addOrder, err := api.requester("BTCEUR/money/order/add", params)
+	addOrder, err := b.requester("BTCEUR/money/order/add", params)
 
 	result := callModels.AddOrder{}
 
@@ -167,11 +159,11 @@ func AddOrder(orderType string, orderAmount int, orderPrice int) (interface{}, e
 }
 
 //WalletHistory | Retrieve your account transaction history
-func WalletHistory(currency string) (callModels.Transactions, error) {
+func (b Bl3p) WalletHistory(currency string) (callModels.Transactions, error) {
 
 	params := map[string]string{"currency": currency, "recs_per_page": "25"}
 
-	transactions, err := api.requester("GENMKT/money/wallet/history", params)
+	transactions, err := b.requester("GENMKT/money/wallet/history", params)
 
 	result := callModels.Transactions{}
 
@@ -183,21 +175,21 @@ func WalletHistory(currency string) (callModels.Transactions, error) {
 }
 
 //CancelOrder | Cancel an open order
-func CancelOrder(orderID int) (callModels.Bl3pResult, error) {
+func (b Bl3p) CancelOrder(orderID int) (callModels.Bl3pResult, error) {
 
 	params := map[string]string{"order_id": strconv.FormatInt(int64(orderID), 10)}
 
-	result, err := api.requester("BTCEUR/money/order/cancel", params)
+	result, err := b.requester("BTCEUR/money/order/cancel", params)
 
 	return result, err
 }
 
 //OrderInfo | Retrieve information about an order
-func OrderInfo(orderID int) (callModels.Order, error) {
+func (b Bl3p) OrderInfo(orderID int) (callModels.Order, error) {
 
 	params := map[string]string{"order_id": strconv.FormatInt(int64(orderID), 10)}
 
-	order, err := api.requester("BTCEUR/money/order/result", params)
+	order, err := b.requester("BTCEUR/money/order/result", params)
 
 	result := callModels.Order{}
 
@@ -209,15 +201,15 @@ func OrderInfo(orderID int) (callModels.Order, error) {
 }
 
 //FetchLast1000Trades | Retrieve the last 1000 trades or the last 1000 trades after the specified tradeID
-func FetchLast1000Trades(tradeID int) (callModels.Trades, error) {
+func (b Bl3p) FetchLast1000Trades(tradeID int) (callModels.Trades, error) {
 	var trades callModels.Bl3pResult
 	var err error
 
 	if tradeID != 0 {
 		params := map[string]string{"trade_id": strconv.FormatInt(int64(tradeID), 10)}
-		trades, err = api.requester("BTCEUR/money/trades/fetch", params)
+		trades, err = b.requester("BTCEUR/money/trades/fetch", params)
 	} else {
-		trades, err = api.requester("BTCEUR/money/trades/fetch", nil)
+		trades, err = b.requester("BTCEUR/money/trades/fetch", nil)
 	}
 
 	result := callModels.Trades{}
@@ -230,9 +222,9 @@ func FetchLast1000Trades(tradeID int) (callModels.Trades, error) {
 }
 
 //FullDepth | Retrieve the orderbook
-func FullDepth() (callModels.Fulldepth, error) {
+func (b Bl3p) FullDepth() (callModels.Fulldepth, error) {
 
-	fullDepth, err := api.requester("BTCEUR/money/depth/full", nil)
+	fullDepth, err := b.requester("BTCEUR/money/depth/full", nil)
 
 	result := callModels.Fulldepth{}
 
@@ -244,9 +236,9 @@ func FullDepth() (callModels.Fulldepth, error) {
 }
 
 //GetAllActiveOrders | Retrieve all your open orders
-func GetAllActiveOrders() (callModels.Orders, error) {
+func (b Bl3p) GetAllActiveOrders() (callModels.Orders, error) {
 
-	allActiveOrders, err := api.requester("BTCEUR/money/orders", nil)
+	allActiveOrders, err := b.requester("BTCEUR/money/orders", nil)
 
 	result := callModels.Orders{}
 
@@ -258,9 +250,9 @@ func GetAllActiveOrders() (callModels.Orders, error) {
 }
 
 //GetNewDepositAddress | Create a new bitcoin deposit address
-func GetNewDepositAddress() (callModels.DepositAddress, error) {
+func (b Bl3p) GetNewDepositAddress() (callModels.DepositAddress, error) {
 
-	depositAddress, err := api.requester("BTCEUR/money/new_deposit_address", nil)
+	depositAddress, err := b.requester("BTCEUR/money/new_deposit_address", nil)
 
 	result := callModels.DepositAddress{}
 
@@ -272,9 +264,9 @@ func GetNewDepositAddress() (callModels.DepositAddress, error) {
 }
 
 //GetLastDepositAddress | Retrieve the last created bitcoin deposit address
-func GetLastDepositAddress() (callModels.DepositAddress, error) {
+func (b Bl3p) GetLastDepositAddress() (callModels.DepositAddress, error) {
 
-	depositAddress, err := api.requester("BTCEUR/money/deposit_address", nil)
+	depositAddress, err := b.requester("BTCEUR/money/deposit_address", nil)
 
 	result := callModels.DepositAddress{}
 
