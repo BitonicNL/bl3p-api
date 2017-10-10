@@ -82,10 +82,19 @@ class Bl3pApi {
 		if (!$result) {
 			throw new Exception("API request failed: Invalid JSON-data received: ".substr($res,0,100));
 		}
+		
+		if(!array_key_exists('result', $result)) {
+			//note that data now is the first element in the array.
+			$result['data'] = $result;
+			$result['result'] = 'success';
+
+			//remove all the keys in $result except 'result'  and 'data'
+			return array_intersect_key($result, array_flip(['result', 'data']));
+		}
 
 		//check returned result of call, if not success then throw an exception with additional information
 		if ($result['result'] !== 'success') {
-			if (!isset($json['data']['code']) || !isset($result['data']['message']))
+			if (!isset($result['data']['code']) || !isset($result['data']['message']))
 				throw new Exception(sprintf('Received unsuccessful state, and additionally a malformed response: %s', var_export($result['data'], true)));
 
 			throw new Exception(sprintf("API request unsuccessful: [%s] %s", $result['data']['code'], $result['data']['message']));
