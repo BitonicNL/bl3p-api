@@ -33,7 +33,7 @@ class Bl3pApi {
 
 		// generate a nonce as microtime, with as-string handling to avoid problems with 32bits systems
 		$mt = explode(' ', microtime());
-		$vars['nonce'] = $mt[1].substr($mt[0], 2, 6);
+		$params['nonce'] = $mt[1].substr($mt[0], 2, 6);
 
 		// generate the POST data string
 		$post_data = http_build_query($params, '', '&');
