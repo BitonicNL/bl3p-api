@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # this code was written by folkert@vanheusden.com
 # it has been released under AGPL v3.0
 
@@ -14,13 +12,15 @@ import pycurl
 import sys
 import urllib.parse
 
+from datetime import datetime
+from time import mktime
+
+
 try:
     from io import BytesIO
 except ImportError:
     from StringIO import StringIO as BytesIO
 
-from datetime import datetime
-from time import mktime
 
 class Bl3pApi:
     url = None
@@ -43,12 +43,13 @@ class Bl3pApi:
 
         # generate the POST data string
         post_data = urllib.parse.urlencode(params)
+#        post_data = params
 
         body = '%s%c%s' % (path, 0x00, post_data)
+#        body = base64.b64decode('%s%c%s' % (path, 0x00, post_data))
 
         privkey_bin = base64.b64decode(self.secKey)
 
-        # TODO
         signature_bin = hmac.new(privkey_bin, body, hashlib.sha512).digest()
 
         signature = base64.b64encode(signature_bin)
@@ -85,7 +86,7 @@ class Bl3pApi:
 
         c.close()
 
-        return json.loads(buffer.getvalue())
+        return json.loads(buffer.getvalue().decode('utf-8'))
 
     # multiply the btc value (e.g 1.3BTC) with this and round-up/down
     def getBtcMultiplier(self):
