@@ -3,9 +3,9 @@ from setuptools import setup
 
 setup(
     name='bl3p',
-    version='20171026.0',
-    description='BL3P.eu exchange API',
-    keywords='bl3p exchange api',
+    version='20171028.0',
+    description='BL3P.eu Python 3 exchange API',
+    keywords='bl3p python3 exchange api',
     url='https://github.com/joosthoeks/bl3p-api',
     author='Joost Hoeks',
     author_email='joosthoeks@gmail.com',

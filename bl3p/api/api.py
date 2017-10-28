@@ -1,7 +1,7 @@
 # this code was written by folkert@vanheusden.com
 # it has been released under AGPL v3.0
 
-# modified by Joost Hoeks (github.com/joosthoeks)
+# modified for Python 3 by Joost Hoeks (github.com/joosthoeks)
 
 
 import base64
@@ -9,11 +9,7 @@ import hashlib
 import hmac
 import json
 import pycurl
-import sys
 import urllib.parse
-
-from datetime import datetime
-from time import mktime
 
 
 try:
@@ -37,22 +33,16 @@ class Bl3pApi:
         self.verbose = v
 
     def apiCall(self, path, params):
-        dt = datetime.utcnow()
-        us = mktime(dt.timetuple()) * 1000 * 1000 + dt.microsecond
-        nonce = '%d' % us
-
-        # generate the POST data string
         post_data = urllib.parse.urlencode(params)
-#        post_data = params
 
         body = '%s%c%s' % (path, 0x00, post_data)
-#        body = base64.b64decode('%s%c%s' % (path, 0x00, post_data))
+        encoded_body = body.encode()
 
         privkey_bin = base64.b64decode(self.secKey)
 
-        signature_bin = hmac.new(privkey_bin, body, hashlib.sha512).digest()
+        signature_bin = hmac.new(privkey_bin, encoded_body, hashlib.sha512)
 
-        signature = base64.b64encode(signature_bin)
+        signature = base64.b64encode(signature_bin.digest()).decode()
 
         fullpath = '%s%s' % (self.url, path)
 
@@ -61,7 +51,7 @@ class Bl3pApi:
         buffer = BytesIO()
 
         c = pycurl.Curl()
-        c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; BL3P Python client modified by github.com/joosthoeks; 0.1)');
+        c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; BL3P Python 3 client modified by github.com/joosthoeks; 0.1)');
         c.setopt(c.WRITEFUNCTION, buffer.write)
         c.setopt(c.URL, fullpath);
         c.setopt(c.POST, 1);
@@ -86,7 +76,7 @@ class Bl3pApi:
 
         c.close()
 
-        return json.loads(buffer.getvalue().decode('utf-8'))
+        return json.loads(buffer.getvalue().decode())
 
     # multiply the btc value (e.g 1.3BTC) with this and round-up/down
     def getBtcMultiplier(self):

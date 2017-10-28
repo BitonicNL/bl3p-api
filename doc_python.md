@@ -15,6 +15,7 @@ $ git pull
 ```
 $ cd test/
 ```
+modify public_key and secret_key in example.py then run:
 ```
 $ python3 example.py
 ```
