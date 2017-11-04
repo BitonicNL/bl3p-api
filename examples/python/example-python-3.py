@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/bin/python3
 
 # this code was written by folkert@vanheusden.com
 # it has been released under AGPL v3.0
@@ -7,13 +7,13 @@
 # in debian this can be found in the 'python-pycurl' package
 
 import base64
-import ConfigParser
+import configparser
 import hashlib
 import hmac
 import json
 import pycurl
 import sys
-import urllib
+import urllib.parse
 
 try:
     from io import BytesIO
@@ -43,24 +43,24 @@ class Bl3pApi:
 		nonce = '%d' % us
 
 		# generate the POST data string
-		post_data = urllib.urlencode(params)
+		post_data = urllib.parse.urlencode(params)
 
 		body = '%s%c%s' % (path, 0x00, post_data)
 
 		privkey_bin = base64.b64decode(self.secKey)
 
-		signature_bin = hmac.new(privkey_bin, body, hashlib.sha512).digest()
+		signature_bin = hmac.new(privkey_bin, body.encode(), hashlib.sha512).digest()
 
 		signature = base64.b64encode(signature_bin)
 
 		fullpath = '%s%s' % (self.url, path)
 
-		headers = [ 'Rest-Key: %s' % self.pubKey, 'Rest-Sign: %s' % signature ]
+		headers = [ 'Rest-Key: %s' % self.pubKey, 'Rest-Sign: %s' % signature.decode() ]
 
 		buffer = BytesIO()
 
 		c = pycurl.Curl()
-		c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; BL3P Python client written by folkert@vanheusden.com; 0.1)');
+		c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; BL3P Python 3 client written by folkert@vanheusden.com; 0.1)');
 		c.setopt(c.WRITEFUNCTION, buffer.write)
 		c.setopt(c.URL, fullpath);
 		c.setopt(c.POST, 1);
@@ -85,7 +85,7 @@ class Bl3pApi:
 
 		c.close()
 
-		return json.loads(buffer.getvalue())
+		return json.loads(buffer.getvalue().decode())
 
 	# multiply the btc value (e.g 1.3BTC) with this and round-up/down
 	def getBtcMultiplier(self):
@@ -190,10 +190,10 @@ class Bl3pApi:
 		return self.apiCall('GENMKT/money/info', params)
         
 def d(j):
-	print json.dumps(j, sort_keys=True, indent=4, separators=(',', ': '))
+	print(json.dumps(j, sort_keys=True, indent=4, separators=(',', ': ')))
 
 # example:
-config = ConfigParser.RawConfigParser()
+config = configparser.RawConfigParser()
 
 if len(sys.argv) == 2:
 	config.read(sys.argv[1])
@@ -206,3 +206,4 @@ secret_key = config.get('bl3p', 'secret_key') # (long string with a-z/A-Z/0-9 an
 b = Bl3pApi('https://api.bl3p.eu/1/', public_key, secret_key)
 
 d(b.walletHistory('BTC', 10))
+
