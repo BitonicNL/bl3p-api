@@ -17,10 +17,13 @@ def main():
     b = bl3p.Bl3pApi('https://api.bl3p.eu/1/', public_key, secret_key)
 #    b.setVerbose(True)
     '''
+    koers_in_eur = 5000
+    kapitaal_in_eur = 10000
+    btc = round(kapitaal_in_eur / koers_in_eur, 8) # round to 8 decimals
     market = 'BTC'
     order_type = 'bid' # 'bid' (=buy BTC) or 'ask' (=sell BTC)
-    order_amount = 100000000 # 1 BTC = 100000000
-    order_price = 100000 # 1 EUR = 100000
+    order_amount = int(btc * b.getBtcMultiplier()) # 1 BTC = 100000000
+    order_price = int(koers_in_eur * b.getEurMultiplier()) # 1 EUR = 100000
     d(b.addOrder(market, order_type, order_amount, order_price))
     '''
     '''

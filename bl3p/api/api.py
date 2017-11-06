@@ -82,7 +82,7 @@ class Bl3pApi:
     def getBtcMultiplier(self):
         return 100000000
 
-    def getEurMutiplier(self):
+    def getEurMultiplier(self):
         return 100000
 
     # Add order to your account.
