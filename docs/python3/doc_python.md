@@ -13,7 +13,7 @@ $ git pull
 
 ## Test
 ```
-$ cd test/
+$ cd examples/python3/
 ```
 modify public_key and secret_key in example.py then run:
 ```
