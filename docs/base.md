@@ -26,14 +26,14 @@ The Authenticated API differs from the Public API since you can control your BL3
 
 The base urls for the two different APIs are as following:
 
-###Authenticated API
+### Authenticated API
 
 **HTTP**
 ```
 https://api.bl3p.eu
 ```
 ___
-###Public API
+### Public API
 
 **Websocket**
 ```
