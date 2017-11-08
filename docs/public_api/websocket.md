@@ -42,15 +42,16 @@ ___
 
 ## 2.1 - Trades
 
-###Channel
->`trades` string
+### Channel
+`trades` string
+
 ```
 The 'trades' ticker streams trade messages to subscribers.
->```
+```
 
-###Message
+### Message
 
->`amount_int` int
+`amount_int` int
 ```
 Traded BTC Amount or  traded LTC amount (*1e8)
 ```
@@ -64,61 +65,61 @@ ___
 ```
 The time of the trade execution.
 ```
->___
+___
 
 
 ## 2.2 - Orderbook
 
-###Channel
->`orderbook` string
+### Channel
+`orderbook` string
 ```
 The 'orderbook' ticker streams the orderbook to subscribers, every time a change occurs.
->```
+```
 
-###Message
+### Message
 
->`asks` array
+`asks` array
 ```
 Array of asks that are in the orderbook.
 ```
 **Each array item of 'asks' will contain:**
 
->>`amount_int` int
-```
-BTC amount or LTC amount (*1e8)
-```
-___
-`price_int` int
-```
-Limit price in EUR (*1e5)
-```
-___
-`count` int
-```
-Count of orders at this price.
-```
->>
+>`amount_int` int
+>```
+>BTC amount or LTC amount (*1e8)
+>```
+>___
+>`price_int` int
+>```
+>Limit price in EUR (*1e5)
+>```
+>___
+>`count` int
+>```
+>Count of orders at this price.
+>```
+>
 >___
 
->`bids` array
+`bids` array
 ```
 Array of bids that are in the orderbook.
 ```
 **Each array item of 'bids' will contain:**
 
->>`amount_int` int
-```
-BTC amount or LTC amount (*1e8)
-```
-___
-`price_int` int
-```
-Limit price in EUR (*1e5)
-```
-___
-`count` int
-```
-Count of orders at this price.
-```
->>
+>`amount_int` int
+>```
+>BTC amount or LTC amount (*1e8)
+>```
+>___
+>`price_int` int
+>```
+>Limit price in EUR (*1e5)
+>```
+>___
+>`count` int
+>```
+>Count of orders at this price.
+>```
+>
 >___

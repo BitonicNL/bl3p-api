@@ -86,15 +86,14 @@ Array of trades executed for the regarding order.
 ```
 **The 'volume' array will contain:**
 >`24h` float
-```
-Volume of the last 24 hours.
-```
-___
-`30d` float
-```
-Volume of the last 30 days.
-```
-
+>```
+>Volume of the last 24 hours.
+>```
+>___
+>`30d` float
+>```
+>Volume of the last 30 days.
+>```
 >___
 
 ## 2.2 - Orderbook
@@ -112,50 +111,48 @@ There are no specific parameters required for this call.
 ```
 
 ### Response
->`asks` array
+`asks` array
 ```
 Array of asks that are in the orderbook.
 ```
 **Each array item of 'asks' will contain:**
 
 >`amount_int` int
-```
-Amount BTC (*1e8)
-```
-___
-`price_int` int
-```
-Limit price in EUR (*1e5)
-```
-___
-`count` int
-```
-Count of orders at this price.
-```
-
+>```
+>Amount BTC (*1e8)
+>```
+>___
+>`price_int` int
+>```
+>Limit price in EUR (*1e5)
+>```
+>___
+>`count` int
+>```
+>Count of orders at this price.
+>```
 >___
 
->`bids` array
+`bids` array
 ```
 Array of bids that are in the orderbook.
 ```
 **Each array item of 'bids' will contain:**
 
 >`amount_int` int
-```
-Amount BTC (*1e8)
-```
-___
-`price_int` int
-```
-Limit price in EUR (*1e5)
-```
-___
-`count` int
-```
-Count of orders at this price.
-```
-
+>```
+>Amount BTC (*1e8)
+>```
+>___
+>`price_int` int
+>```
+>Limit price in EUR (*1e5)
+>```
+>___
+>`count` int
+>```
+>Count of orders at this price.
+>```
 >___
 
 ## 2.3 - Last 1000 trades
@@ -174,29 +171,28 @@ There are no specific parameters required for this call.
 
 ### Response
 
->`trades` array
+`trades` array
 ```
 Array of trades.
 ```
 **Each array item of 'trades' will contain:**
 >`trade_id` int
-```
-Id of the trade.
-```
-___
-`date` timestamp (in milliseconds)
-```
-The time of the trade execution.
-```
-___
-`amount_int` int
-```
-Amount traded. (*1e8)
-```
-___
-`price_int` int
-```
-Price of the traded item in EUR. (*1e5)
-```
-
+>```
+>Id of the trade.
+>```
+>___
+>`date` timestamp (in milliseconds)
+>```
+>The time of the trade execution.
+>```
+>___
+>`amount_int` int
+>```
+>Amount traded. (*1e8)
+>```
+>___
+>`price_int` int
+>```
+>Price of the traded item in EUR. (*1e5)
+>```
 >___
