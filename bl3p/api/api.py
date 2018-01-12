@@ -1,5 +1,4 @@
-# this code was written by folkert@vanheusden.com
-# it has been released under AGPL v3.0
+# Unofficial Python 3 Bl3p client exchange api
 
 # modified for Python 3 by Joost Hoeks (github.com/joosthoeks)
 
@@ -51,7 +50,7 @@ class Bl3pApi:
         buffer = BytesIO()
 
         c = pycurl.Curl()
-        c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; BL3P Python 3 client modified by github.com/joosthoeks; 0.1)');
+        c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; Unofficial Python 3 Bl3p client exchange api; 0.1)');
         c.setopt(c.WRITEFUNCTION, buffer.write)
         c.setopt(c.URL, fullpath);
         c.setopt(c.POST, 1);

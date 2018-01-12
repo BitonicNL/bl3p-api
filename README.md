@@ -1,16 +1,25 @@
-BL3P exchange official documentation
+Unofficial Python 3 Bl3p client exchange api
 ===
 
-Please access [docs](docs/) for the latest official documentation.
+## Install
+```
+$ git clone https://github.com/joosthoeks/bl3p-api.git
+$ cd bl3p-api
+$ [sudo] pip3 install -e .
+```
 
-API reference implementations
-===
+## Update
+```
+$ cd bl3p-api
+$ git pull
+```
 
-You can find each client reference implementation in:
+## Test
+```
+$ cd examples/python3/
+```
+modify public_key and secret_key in example.py then run:
+```
+$ python3 example.py
+```
 
-* [PHP](examples/php/)
-* [NodeJs](examples/nodejs/)
-* [Java](examples/java/)
-* [Go](examples/go/)
-* [Python 2](examples/python/)
-* [Python 3](examples/python3/) [doc](docs/python3/)
