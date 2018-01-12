@@ -88,19 +88,19 @@ ___
 ```
 Amount BTC, amount LTC (*1e8)
 ```
-The field described above is optional
+The field described above is optional. _When omitted, amount_funds_int is required._
 ___
 `price_int` int
 ```
 Limit price in EUR (*1e5)
 ```
-The field described above is optional
+The field described above is optional. _When omitted, order will be executed as a market order._
 ___
 `amount_funds_int` int
 ```
 Maximal EUR amount to spend (*1e5)
 ```
-The field described above is optional
+The field described above is optional. _When omitted, amount_int is required._
 ___
 `fee_currency` string
 ```
