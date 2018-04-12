@@ -12,3 +12,6 @@ You can find each client reference implementation in:
 * [NodeJs](examples/nodejs/)
 * [Java](examples/java/)
 * [Go](examples/go/)
+* [Python 2](examples/python/)
+* [Python 3](examples/python3/) [doc](examples/python3/README.md)
+

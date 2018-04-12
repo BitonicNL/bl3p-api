@@ -4,7 +4,7 @@ Unofficial Python 3 Bl3p client exchange api
 ## Install
 ```
 $ git clone https://github.com/joosthoeks/bl3p-api.git
-$ cd bl3p-api
+$ cd bl3p-api/examples/python3
 $ [sudo] pip3 install -e .
 ```
 
