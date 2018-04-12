@@ -1,20 +1,12 @@
 # Unofficial Python 3 Bl3p client exchange api
 
-# modified for Python 3 by Joost Hoeks (github.com/joosthoeks)
-
 
 import base64
 import hashlib
 import hmac
 import json
-import pycurl
+import requests
 import urllib.parse
-
-
-try:
-    from io import BytesIO
-except ImportError:
-    from StringIO import StringIO as BytesIO
 
 
 class Bl3pApi:
@@ -28,54 +20,31 @@ class Bl3pApi:
         self.pubKey = pk
         self.secKey = sk
 
-    def setVerbose(self, v):
-        self.verbose = v
-
     def apiCall(self, path, params):
         post_data = urllib.parse.urlencode(params)
 
-        body = '%s%c%s' % (path, 0x00, post_data)
-        encoded_body = body.encode()
+        body = ('%s%c%s' % (path, 0x00, post_data)).encode()
 
         privkey_bin = base64.b64decode(self.secKey)
 
-        signature_bin = hmac.new(privkey_bin, encoded_body, hashlib.sha512)
+        signature_bin = hmac.new(privkey_bin, body, hashlib.sha512)
 
         signature = base64.b64encode(signature_bin.digest()).decode()
 
         fullpath = '%s%s' % (self.url, path)
 
-        headers = [ 'Rest-Key: %s' % self.pubKey, 'Rest-Sign: %s' % signature ]
+        headers = {
+                'Rest-Key': self.pubKey,
+                'Rest-Sign': signature
+                }
 
-        buffer = BytesIO()
+        r = requests.get(fullpath, headers=headers, data=post_data)
 
-        c = pycurl.Curl()
-        c.setopt(c.USERAGENT, 'Mozilla/4.0 (compatible; Unofficial Python 3 Bl3p client exchange api; 0.1)');
-        c.setopt(c.WRITEFUNCTION, buffer.write)
-        c.setopt(c.URL, fullpath);
-        c.setopt(c.POST, 1);
-        c.setopt(c.POSTFIELDS, post_data);
-        c.setopt(c.HTTPHEADER, headers);
-        c.setopt(c.SSLVERSION, 1);
-        c.setopt(c.SSL_VERIFYPEER, True);
-        c.setopt(c.SSL_VERIFYHOST, 2);
-        c.setopt(c.CONNECTTIMEOUT, 5);
-        c.setopt(c.TIMEOUT, 10);
-
-        if self.verbose:
-            c.setopt(c.VERBOSE, 1)
-        else:
-            c.setopt(c.VERBOSE, 0)
-
-        c.perform()
-
-        response_code = c.getinfo(c.RESPONSE_CODE)
+        response_code = r.status_code
         if response_code != 200:
             raise Exception('unexpected response code: %d' % response_code)
 
-        c.close()
-
-        return json.loads(buffer.getvalue().decode())
+        return r.json()
 
     # multiply the btc value (e.g 1.3BTC) with this and round-up/down
     def getBtcMultiplier(self):
