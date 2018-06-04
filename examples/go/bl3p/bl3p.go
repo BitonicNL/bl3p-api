@@ -115,7 +115,7 @@ func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pR
 
 	//error handling
 	if res.StatusCode != 200 {
-		return result, fmt.Errorf("Request didn't return a HTTP Status 200 but HTTP Status: %v.", res.StatusCode)
+		return result, fmt.Errorf("request didn't return a HTTP Status 200 but HTTP Status: %v", res.StatusCode)
 	}
 
 	//read request body
