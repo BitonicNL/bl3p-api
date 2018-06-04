@@ -12,7 +12,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/BitonicNL/bl3p-api/examples/go/callModels"
+	"github.com/dfijma/bl3p-api/examples/go/callModels"
 )
 
 //Bl3p struct
@@ -272,6 +272,20 @@ func (b Bl3p) GetLastDepositAddress() (callModels.DepositAddress, error) {
 
 	if err == nil {
 		err = json.Unmarshal(depositAddress.Data, &result)
+	}
+
+	return result, err
+}
+
+//GetInfo | Get account info
+func (b Bl3p) GetInfo() (callModels.Info, error) {
+
+	info, err := b.requester("GENMKT/money/info", nil)
+
+	result := callModels.Info{}
+
+	if err == nil {
+		err = json.Unmarshal(info.Data, &result)
 	}
 
 	return result, err

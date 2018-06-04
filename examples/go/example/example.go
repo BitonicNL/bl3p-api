@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	bl3p "github.com/BitonicNL/bl3p-api/examples/go/bl3p"
+	bl3p "github.com/dfijma/bl3p-api/examples/go/bl3p"
 )
 
 func main() {
