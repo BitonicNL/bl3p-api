@@ -12,7 +12,7 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/dfijma/bl3p-api/examples/go/callModels"
+	"github.com/BitonicNL/bl3p-api/examples/go/callModels"
 )
 
 //Bl3p struct
