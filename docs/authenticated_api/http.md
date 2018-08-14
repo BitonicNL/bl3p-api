@@ -100,7 +100,7 @@ ___
 ```
 Maximal EUR amount to spend (*1e5)
 ```
-The field described above is optional. _When this field is omitted, amount_int is required. Also note that this field and the amount_int field cannot both be set when the price field is also set. When the price field is not set this field can be set when amount_int is also set._
+The field described above is optional. _When omitted, amount_int is required. Also note that this field and the amount_int field cannot both be set when the price field is also set. When the price field is not set this field can be set when amount_int is also set._
 ___
 `fee_currency` string
 ```
