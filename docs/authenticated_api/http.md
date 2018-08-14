@@ -26,7 +26,7 @@
 ## 1 - Introduction
 
 This document describes the usage of the private HTTP API of BL3P.
-In the file on directory above you can find the base.md file.
+In the file one directory above you can find the base.md file.
 The base.md document describes all basic details that you need to know to use the BL3P API.
 If you would like to know how to make a connection to the BL3P API, please check the examples that are available one directory above.
 
@@ -68,7 +68,7 @@ Name of subcall, (for example: “add”)
 ___
 
 The response is a succes or an error. In case of result: succes, the requested data will be returned.
-In case of an error, an error code will be retuned. The possible error codes are listed in the appendix.
+In case of an error, an error code will be returned. The possible error codes are listed in the appendix.
 
 ## 2.1 - Create an order
 
@@ -88,7 +88,7 @@ ___
 ```
 Amount BTC, amount LTC (*1e8)
 ```
-The field described above is optional. _When omitted, amount_funds_int is required._
+The field described above is optional. _When omitted, amount_funds_int is required. Also note that this field and the amount_funds_int field cannot both be set when the price field is also set. When the price field is not set this field can be set when amount_funds_int is also set._
 ___
 `price_int` int
 ```
@@ -100,7 +100,7 @@ ___
 ```
 Maximal EUR amount to spend (*1e5)
 ```
-The field described above is optional. _When omitted, amount_int is required._
+The field described above is optional. _When this field is omitted, amount_int is required. Also note that this field and the amount_int field cannot both be set when the price field is also set. When the price field is not set this field can be set when amount_int is also set._
 ___
 `fee_currency` string
 ```
@@ -131,7 +131,7 @@ The id of the order that you wish to cancel.
 ### Response
 ```
 For this call there is no specific result returned other then
-the result of the call which contains: 'success' or 'failed' and a optional error array.
+the result of the call which contains: 'success' or 'failed' and an optional error array.
 ```
 
 
