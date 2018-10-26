@@ -359,7 +359,7 @@ ___
 ```
 Number of records per page.
 ```
-The field described above is optional, default is 50
+The field described above is optional, default is 10
 >___
 
 ### Response
