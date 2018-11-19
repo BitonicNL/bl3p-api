@@ -19,7 +19,9 @@
    7. Get order history
    8. Fetch all trades on BL3P
 
-4. Appendix - Error code
+4. Appendix
+   1. Error code
+   2. Rate limiting
 
 ---
 
@@ -316,7 +318,7 @@ Count of orders at this price.
 
 ## 3 - Account info & functions
 
-## 3.1 - Get your transaction history
+## 3.1 - Get the transaction history
 
 ### Call
 
@@ -842,7 +844,10 @@ Price of the traded item in EUR. (*1e5)
 
 >___
 
-## 4 - Appendix - Error codes
+
+## 4 - Appendix
+
+## 4.2 - Error codes
 
 The API can respond to invalid calls with the following error messages:
 
@@ -984,3 +989,14 @@ ___
 Requested path and/or call doesn't exist.
 ```
 ___
+
+## 4.2 - Rate limiting
+
+| Call type                   | Count |
+|-----------------------------|-------|
+| <market>/money/depth/full   | 30    |
+| GENMKT/money/wallet/history | 300   |
+| <market>/money/trades/fetch | 100   |
+| all other calls             | 600   |
+   
+The first column describes the call type and the second column represents the regarding amount of calls one can execute successfully per 5 minutes.
