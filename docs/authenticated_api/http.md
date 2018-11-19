@@ -10,7 +10,7 @@
    4. Get the whole orderbook
 
 3. Account info & functions
-   1. Get the transaction 
+   1. Get the transaction history
    2. Create a new deposit address
    3. Get the last deposit address
    4. Create a withdrawal
@@ -318,7 +318,7 @@ Count of orders at this price.
 
 ## 3 - Account info & functions
 
-## 3.1 - Get your transaction history
+## 3.1 - Get the transaction history
 
 ### Call
 
@@ -999,5 +999,4 @@ ___
 | <market>/money/trades/fetch | 100   |
 | all other calls             | 600   |
    
-The first column describes the call type and the second column represents the regarding amount of calls one can execute successfully per x minutes. If you exceed the maximum amount of calls the regarding client ip will get blocked for x minutes.
-
+The first column describes the call type and the second column represents the regarding amount of calls one can execute successfully per 5 minutes.
