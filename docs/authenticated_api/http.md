@@ -197,6 +197,11 @@ ___
 The time the order got added.
 ```
 ___
+`date_closed` timestamp
+```
+The time the order got closed. (not available for marketorders and cancelled orders)
+```
+___
 `total_amount` amountObj
 ```
 Total amount of the trades that got executed. (Can be: BTC or LTC).
