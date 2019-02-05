@@ -105,3 +105,15 @@ type Transaction struct {
 type AddOrder struct {
 	OrderID int64 `json:"order_id"`
 }
+
+//Wallet | Wallet struct
+type Wallet struct {
+	Balance   AmountObj `json:"balance"`
+	Available AmountObj `json:"available"`
+}
+
+//Info | Account call struct
+type Info struct {
+	UserID  int64             `json:"user_id"`
+	Wallets map[string]Wallet `json:"wallets"`
+}
