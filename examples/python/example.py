@@ -41,6 +41,7 @@ class Bl3pApi:
 		dt = datetime.utcnow()
 		us = mktime(dt.timetuple()) * 1000 * 1000 + dt.microsecond
 		nonce = '%d' % us
+		params['nonce'] = nonce
 
 		# generate the POST data string
 		post_data = urllib.urlencode(params)
