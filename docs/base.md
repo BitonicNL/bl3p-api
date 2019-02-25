@@ -68,6 +68,13 @@ base64 encode of (
 )
 ```
 Note: That the HMAC_SHA512 needs to output raw binary data, using hexits (hexadecimal digits) will return an error.
+___
+`nonce` 
+
+In the body of a post request you must supply a `nonce` parameter which needs to have a higher value than the value of `nonce` in a previous request. The `nonce` value is kept per API key
+
+Note: If no previous request has been made you can set the value to any value (e.g. a timestamp with milliseconds).
+In the current implementation, to prevent breakage from clients that have not yet implemented the `nonce`, this field is optional. However if the `nonce` parameter is set once, the `nonce` parameter is always required for subsequent requests, so to avoid replay attacks make sure to include the `nonce` parameter in future requests.
 
 ### 2.4 - Capacity
 
