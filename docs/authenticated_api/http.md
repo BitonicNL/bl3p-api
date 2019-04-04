@@ -279,6 +279,12 @@ There are no specific parameters required for this call.
 ```
 Array of asks that are in the orderbook.
 ```
+
+`bids` array
+```
+Array of bids that are in the orderbook.
+```
+
 **Each array item of 'asks' will contain:**
 
 `amount_int` int
@@ -296,12 +302,6 @@ ___
 Count of orders at this price.
 ```
 
->___
-
-`bids` array
-```
-Array of bids that are in the orderbook.
-```
 **Each array item of 'bids' will contain:**
 
 `amount_int` int
@@ -571,11 +571,11 @@ ___
 Percentage fee for the user
 ```
 ___
-`wallets` array
+`wallets` object
 ```
-Array of wallets.
+Object of wallets, the object will contain the following keys: BTC, LTC, EUR
 ```
-**Each array item of 'wallets' will contain:**
+**Each wallet item of 'wallets' will contain:**
 
 `balance` amountObj
 ```
