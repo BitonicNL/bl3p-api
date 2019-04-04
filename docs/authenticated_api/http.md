@@ -573,7 +573,7 @@ Percentage fee for the user
 ___
 `wallets` object
 ```
-Object of wallets, the object will contain the following keys: BTC, LTC, BHC, EUR
+Object of wallets, the object will contain the following keys: BTC, LTC, EUR
 ```
 **Each wallet item of 'wallets' will contain:**
 
