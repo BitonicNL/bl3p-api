@@ -8,6 +8,7 @@
   1. Ticker
   2. Orderbook
   3. Last 1000 trades
+  4. Trade history
 
 ## 1 - Introduction
 
@@ -51,13 +52,11 @@ ___
 ```text
 ticker
 ```
-
 ### Request
 
 ```
 There are no specific parameters required for this call.
 ```
-
 ### Response
 
 `currency` string
@@ -194,5 +193,52 @@ Array of trades.
 >`price_int` int
 >```
 >Price of the traded item in EUR. (*1e5)
+>```
+>___
+
+## 2.4 - Trade history
+
+### Call
+
+```text
+tradehistory
+```
+
+### Request
+`timefactor` string
+```
+'h', 'd', 'm', 'y'
+```
+The field described above is optional and if set, the timevalue parameter needs to be set as well
+___
+`timevalue` int
+```
+24
+```
+The field described above is optional and if set, the timefactor parameter needs to be set as well
+>___
+
+### Response
+
+`tradehistory` array
+```
+An array containing datapoints
+```
+___
+
+**The 'tradehistory' array will contain:**
+>`t` float
+>```
+>The time of the datapoint
+>```
+>___
+>`p` float
+>```
+>The price of the datapoint
+>```
+>___
+>`v` float
+>```
+>The volume of the datapoint
 >```
 >___
