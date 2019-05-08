@@ -207,7 +207,7 @@ tradehistory
 ### Request
 `timefactor` string
 ```
-'h'
+'h', 'd', 'm', 'y'
 ```
 The field described above is optional and if set, the timevalue parameter needs to be set as well
 ___
