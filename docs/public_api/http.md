@@ -8,7 +8,7 @@
   1. Ticker
   2. Orderbook
   3. Last 1000 trades
-  4. Chart
+  4. Trade history
 
 ## 1 - Introduction
 
@@ -196,7 +196,7 @@ Array of trades.
 >```
 >___
 
-## 2.4 - Chart
+## 2.4 - Trade history
 
 ### Call
 
