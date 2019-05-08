@@ -227,7 +227,7 @@ An array containing datapoints
 ___
 
 **The 'tradehistory' array will contain:**
->`t` float
+>`t` long
 >```
 >The time of the datapoint
 >```
