@@ -120,9 +120,11 @@ func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pR
 
 	//read request body
 	contents, err := ioutil.ReadAll(res.Body)
+	fmt.Println(contents)
 
 	//parse json
 	err = json.Unmarshal(contents, &result)
+	fmt.Println(result)
 
 	//error handling
 	if err != nil {
@@ -138,6 +140,125 @@ func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pR
 
 	return result, err
 }
+
+//requester | Creates the request to Bl3p API
+func (b Bl3p) tickerRequester(call string, params map[string]string) (callModels.Ticker, error) {
+
+	//create empty bl3presult
+	result := callModels.Ticker{}
+
+	//build url
+	u, err := url.ParseRequestURI(b.url)
+
+	//error handling
+	if err != nil {
+		return result, err
+	}
+
+	u.Path = "/" + b.version + "/" + call
+	apiCallURL := fmt.Sprintf("%v", u)
+
+	//prepare params
+	data := url.Values{}
+
+	//convert params into querystring
+	if len(params) > 0 {
+		for k, p := range params {
+			data.Set(k, p)
+		}
+	}
+
+	//create request
+	client := &http.Client{}
+	r, err := http.NewRequest("GET", apiCallURL, bytes.NewBufferString(data.Encode()))
+
+	//error handling
+	if err != nil {
+		return result, err
+	}
+
+	//do request
+	res, err := client.Do(r)
+
+	//error handling
+	if err != nil {
+		return result, err
+	}
+
+	//error handling
+	if res.StatusCode != 200 {
+		return result, fmt.Errorf("request didn't return a HTTP Status 200 but HTTP Status: %v", res.StatusCode)
+	}
+
+	//read request body
+	contents, err := ioutil.ReadAll(res.Body)
+	fmt.Println(contents)
+
+	//parse json
+	err = json.Unmarshal(contents, &result)
+	fmt.Println(result)
+
+	//error handling
+	if err != nil {
+		return result, err
+	}
+
+	return result, err
+}
+
+//Public API
+
+//Get market ticker
+func (b Bl3p) GetTicker(market string) (callModels.Ticker, error) {
+
+	call := market + "/ticker"
+
+	result, err := b.tickerRequester(call, nil)
+
+	return result, err
+}
+
+//Retrieve the orderbook
+func (b Bl3p) GetOrderbook(market string) (callModels.Orderbook, error) {
+
+	call := market + "/orderbook"
+
+	Orderbook, err := b.requester(call, nil)
+
+	result := callModels.Orderbook{}
+
+	if err == nil {
+		err = json.Unmarshal(Orderbook.Data, &result)
+	}
+
+	return result, err
+}
+
+//Retrieve the last 1000 trades or the last 1000 trades after the specified tradeID
+func (b Bl3p) GetLast1000Trades(market string, tradeID int) (callModels.Trades, error) {
+	var trades callModels.Bl3pResult
+	var err error
+
+	call := market + "/trades"
+
+	if tradeID != 0 {
+		params := map[string]string{"trade_id": strconv.FormatInt(int64(tradeID), 10)}
+		trades, err = b.requester(call, params)
+	} else {
+		trades, err = b.requester(call, nil)
+	}
+
+	result := callModels.Trades{}
+
+	if err == nil {
+		err = json.Unmarshal(trades.Data, &result)
+	}
+
+	return result, err
+}
+
+//GetTradeHistory
+//TODO Implement GetTradeHistory
 
 //AddOrder | Add new order to the orderbook
 func (b Bl3p) AddOrder(orderType string, orderAmount int, orderPrice int) (interface{}, error) {
@@ -195,41 +316,6 @@ func (b Bl3p) OrderInfo(orderID int) (callModels.Order, error) {
 
 	if err == nil {
 		err = json.Unmarshal(order.Data, &result)
-	}
-
-	return result, err
-}
-
-//FetchLast1000Trades | Retrieve the last 1000 trades or the last 1000 trades after the specified tradeID
-func (b Bl3p) FetchLast1000Trades(tradeID int) (callModels.Trades, error) {
-	var trades callModels.Bl3pResult
-	var err error
-
-	if tradeID != 0 {
-		params := map[string]string{"trade_id": strconv.FormatInt(int64(tradeID), 10)}
-		trades, err = b.requester("BTCEUR/money/trades/fetch", params)
-	} else {
-		trades, err = b.requester("BTCEUR/money/trades/fetch", nil)
-	}
-
-	result := callModels.Trades{}
-
-	if err == nil {
-		err = json.Unmarshal(trades.Data, &result)
-	}
-
-	return result, err
-}
-
-//FullDepth | Retrieve the orderbook
-func (b Bl3p) FullDepth() (callModels.Fulldepth, error) {
-
-	fullDepth, err := b.requester("BTCEUR/money/depth/full", nil)
-
-	result := callModels.Fulldepth{}
-
-	if err == nil {
-		err = json.Unmarshal(fullDepth.Data, &result)
 	}
 
 	return result, err

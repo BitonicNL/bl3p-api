@@ -8,8 +8,8 @@ type Bl3pResult struct {
 	Data   json.RawMessage `json:"data"`
 }
 
-//Fulldepth | FullDepth call struct
-type Fulldepth struct {
+//Orderbook | Orderbook call struct
+type Orderbook struct {
 	Bids []OrderbookItem
 	Asks []OrderbookItem
 }
@@ -116,4 +116,22 @@ type Wallet struct {
 type Info struct {
 	UserID  int64             `json:"user_id"`
 	Wallets map[string]Wallet `json:"wallets"`
+}
+
+//Ticker | Ticker call struct
+type Ticker struct {
+	Currency  string  `json:"currency"`
+	Last      float32 `json:"last"`
+	Bid       float32 `json:"bid"`
+	Ask       float32 `json:"ask"`
+	High      float32 `json:"high"`
+	Low       float32 `json:"low"`
+	Timestamp int32   `json:"timestamp"`
+	Volume    volume  `json:"volume"`
+}
+
+//Ticker | Ticker call struct
+type volume struct {
+	Daily   float32 `json:"24h"`
+	Monthly float32 `json:"30d"`
 }
