@@ -120,11 +120,9 @@ func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pR
 
 	//read request body
 	contents, err := ioutil.ReadAll(res.Body)
-	fmt.Println(contents)
 
 	//parse json
 	err = json.Unmarshal(contents, &result)
-	fmt.Println(result)
 
 	//error handling
 	if err != nil {
@@ -192,11 +190,9 @@ func (b Bl3p) tickerRequester(call string, params map[string]string) (callModels
 
 	//read request body
 	contents, err := ioutil.ReadAll(res.Body)
-	fmt.Println(contents)
 
 	//parse json
 	err = json.Unmarshal(contents, &result)
-	fmt.Println(result)
 
 	//error handling
 	if err != nil {
