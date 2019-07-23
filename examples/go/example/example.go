@@ -23,7 +23,7 @@ func main() {
 		fmt.Println(depositAddress)
 	}
 
-	last1000trades, err := bl3p.FetchLast1000Trades(0)
+	last1000trades, err := bl3p.GetLast1000Trades("BTCEUR", 0)
 	if err != nil {
 		fmt.Println(err)
 	} else {
