@@ -1,0 +1,100 @@
+Examples
+========
+
+invalid public/secret key:
+-------------------------
+{
+    "data": {
+        "code": "KEY_MISSING",
+        "message": "Rest-Key missing"
+    },
+    "result": "error"
+}
+
+
+invalid market:
+--------------
+{
+    "data": {
+        "code": "UNKNOWN_MARKETPLACE",
+        "message": "Unknown marketplace"
+    },
+    "result": "error"
+}
+
+
+price too low:
+-------------
+{
+    "data": {
+        "code": "PRICE_LESS_THAN_MINIMUM",
+        "message": "Price '1' less than marketplace minimum '1000'"
+    },
+    "result": "error"
+}
+
+
+insufficient funds:
+------------------
+{
+    "data": {
+        "code": "INSUFFICIENT_FUNDS",
+        "message": "Insufficient available funds, available = 0 order value = 10000000"
+    },
+    "result": "error"
+}
+
+
+market unavailable:
+------------------
+{
+    "data": {
+        "code": "ERR_TEMPORARILY_UNAVAILABLE",
+        "message": "Error creating address"
+    },
+    "result": "error"
+}
+
+
+walletHistory():
+-------------
+{
+    "data": {
+        "max_page": 1,
+        "page": 1,
+        "records": 1,
+        "transactions": [
+            {
+                "amount": {
+                    "currency": "BTC",
+                    "display": "0.01000000 BTC",
+                    "display_short": "0.01 BTC",
+                    "value": "0.01000000",
+                    "value_int": "1000000"
+                },
+                "balance": {
+                    "currency": "BTC",
+                    "display": "0.01000000 BTC",
+                    "display_short": "0.01 BTC",
+                    "value": "0.01000000",
+                    "value_int": "1000000"
+                },
+                "date": 1450353480,
+                "debit_credit": "credit",
+                "transaction_id": 575126,
+                "type": "deposit"
+            }
+        ]
+    },
+    "result": "success"
+}
+
+
+getNewDepositAddress():
+--------------------
+{
+    "data": {
+        "address": "**********************************"
+    },
+    "result": "success"
+}
