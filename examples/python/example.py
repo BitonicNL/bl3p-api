@@ -119,7 +119,7 @@ class Bl3pApi:
 	# @method cancelOrder
 	# @param  market        'EUR'
 	# @param  order_id 	Id of the order
-	# @return Direct resulf of the '<market>/money/order/cancel' call
+	# @return Direct result of the '<market>/money/order/cancel' call
 	def cancelOrder(self, market, order_id):
 		params = { 'order_id' : order_id }
 
@@ -129,7 +129,7 @@ class Bl3pApi:
 	# @method orderInfo
 	# @param  market        'EUR'
 	# @param  order_id 	Id of the order
-	# @return Direct resulf of the '<market>/money/order/result' call
+	# @return Direct result of the'<market>/money/order/result' call
 	def orderInfo(self, market, order_id):
 		params = { 'order_id' : order_id }
 
@@ -138,7 +138,7 @@ class Bl3pApi:
 	# Fetch complete orderbook
 	# @method fullDepth
 	# @param  market        'EUR'
-	# @return Direct resulf of the '<market>/money/depth/full' call
+	# @return Direct result of the '<market>/money/depth/full' call
 	def fullDepth(self, market):
 		return self.apiCall("%sEUR/money/depth/full" % market, { })
 

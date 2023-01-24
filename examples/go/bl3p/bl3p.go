@@ -46,7 +46,7 @@ func (e Error) Error() string {
 //requester | Creates the request to Bl3p API
 func (b Bl3p) requester(call string, params map[string]string) (callModels.Bl3pResult, error) {
 
-	//create empty bl3presult
+	//create empty bl3p result
 	result := callModels.Bl3pResult{}
 
 	//build url

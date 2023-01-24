@@ -74,7 +74,7 @@ ___
 In the body of a post request you must supply a `nonce` parameter which needs to have a higher value than the value of `nonce` in a previous request. The `nonce` value is kept per API key
 
 Note: If no previous request has been made you can set the value to any value (e.g. a timestamp with milliseconds).
-In the current implementation, to prevent breakage from clients that have not yet implemented the `nonce`, this field is optional. However if the `nonce` parameter is set once, the `nonce` parameter is always required for subsequent requests, so to avoid replay attacks make sure to include the `nonce` parameter in future requests.
+In the current implementation, to prevent breakage from clients that have not yet implemented the `nonce`, this field is optional. However, if the `nonce` parameter is set once, the `nonce` parameter is always required for subsequent requests, so to avoid replay attacks make sure to include the `nonce` parameter in future requests.
 
 ### 2.4 - Capacity
 
@@ -83,8 +83,8 @@ The current amount of calls per 10 minutes is set to 600.
 
 ### 2.5 - AmountObj type
 
-You will notice that sometimes we don't define an field type as '_string_', '_array_' or '_int_', but as '_amountObj_'.
-This is an type of field which will always maintain the following format:
+You will notice that sometimes we don't define a field type as '_string_', '_array_' or '_int_', but as '_amountObj_'.
+This is a type of field which will always maintain the following format:
 
 `value_int` string
 
