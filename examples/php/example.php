@@ -212,7 +212,7 @@ function getNewDepositAddress() {
 
 	global $api;
 
-	return $api->apiCall("BTCEUR/money/new_deposit_address");
+	return $api->apiCall("GENMKT/money/new_deposit_address");
 }
 
 /**
@@ -225,7 +225,7 @@ function getLastDepositAddress() {
 
 	global $api;
 
-	return $api->apiCall("BTCEUR/money/deposit_address");
+	return $api->apiCall("GENMKT/money/deposit_address");
 }
 
 /**
