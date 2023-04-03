@@ -146,13 +146,13 @@ class Bl3pApi:
 	# @method getNewDepositAddress
 	# @return new deposit address
 	def getNewDepositAddress(self, market):
-		return self.api_call('GENMKT/money/new_deposit_address', {})
+		return self.apiCall('GENMKT/money/new_deposit_address', {})
 
 	# Get the most recent generated deposit address
 	# @method getLastDepositAddress
 	# @return most recent generated deposit address
 	def getLastDepositAddress(self, market):
-		return self.api_call('GENMKT/money/deposit_address', {})
+		return self.apiCall('GENMKT/money/deposit_address', {})
 
 	# Get the last 1000 trades that where executed before an specific trade_id
 	# @method fetchTrades
