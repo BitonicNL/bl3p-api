@@ -252,7 +252,7 @@ func (b Bl3p) GetAllActiveOrders() (callModels.Orders, error) {
 //GetNewDepositAddress | Create a new bitcoin deposit address
 func (b Bl3p) GetNewDepositAddress() (callModels.DepositAddress, error) {
 
-	depositAddress, err := b.requester("BTCEUR/money/new_deposit_address", nil)
+	depositAddress, err := b.requester("GENMKT/money/new_deposit_address", nil)
 
 	result := callModels.DepositAddress{}
 
@@ -266,7 +266,7 @@ func (b Bl3p) GetNewDepositAddress() (callModels.DepositAddress, error) {
 //GetLastDepositAddress | Retrieve the last created bitcoin deposit address
 func (b Bl3p) GetLastDepositAddress() (callModels.DepositAddress, error) {
 
-	depositAddress, err := b.requester("BTCEUR/money/deposit_address", nil)
+	depositAddress, err := b.requester("GENMKT/money/deposit_address", nil)
 
 	result := callModels.DepositAddress{}
 
