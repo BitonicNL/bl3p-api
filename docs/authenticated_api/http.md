@@ -53,7 +53,7 @@ Note: GENMKT is used for market independent calls
 <market> = BTCEUR, LTCEUR, GENMKT
 ```
 ___
-Namespace of call. Usualy: "money"
+Namespace of call. Usually: "money"
 ```text
 <namespace> = $namespace
 ```
@@ -69,7 +69,7 @@ Name of subcall, (for example: “add”)
 ```
 ___
 
-The response is a succes or an error. In case of result: succes, the requested data will be returned.
+The response is a success or an error. In case of result: success, the requested data will be returned.
 In case of an error, an error code will be returned. The possible error codes are listed in the appendix.
 
 ## 2.1 - Create an order
@@ -527,13 +527,18 @@ IBAN account-name (should match your account verification)
 ```
 The address to withdraw to
 ```
-`extra_fee` int (use 1 for extra fee)
+`extra_fee` int (use 1 for extra fee) (deprecated, please use fee_priority)
 ```
-This will send the withdrawal as priority, extra fee will be charged (see bl3p.eu)
+This will send the withdrawal as priority, extra fee will be charged (see bl3p.eu) (deprecated, please use fee_priority)
 ```
 The field described above is optional, default is no extra fee
 ___
-
+`fee_priority` string (low | medium | high)
+```
+This will send the withdrawal as low, medium or high priority
+```
+The field described above is optional, default is medium
+___
 `amount_int` int
 ```
 Satoshis or 0,00001 EUR

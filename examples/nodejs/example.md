@@ -24,7 +24,7 @@
   4. Create a withdrawal
   5. Get account info & balance
   6. Get active orders
-  7. Get the last 1000 trades after an specific trade
+  7. Get the last 1000 trades after a specific trade
 
 4. Appendix - Error code
 
@@ -33,7 +33,7 @@
 ## 1 - Introduction
 
 This document describes the usage of BL3P NodeJS module.
-If you don't have an API-key you can signup and create one at https://bl3p.eu.
+If you don't have an API-key you can sign up and create one at https://bl3p.eu.
 
 ## 1.1 - Installation
 
@@ -743,7 +743,7 @@ ___
 >>
 >___
 
-## 3.7 - Get the last 1000 trades after an specific trade
+## 3.7 - Get the last 1000 trades after a specific trade
 
 ### Method
 
