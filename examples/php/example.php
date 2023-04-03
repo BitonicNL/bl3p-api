@@ -119,7 +119,7 @@ $api = new Bl3pApi($url, $pubkey, $privkey);
 
 try {
 
-	//Add an buy order for 0.01 @400 euro
+	//Add a buy order for 0.01 @400 euro
 
 	$result = addOrder('bid', 1000000, 40000000);
 
@@ -157,7 +157,7 @@ function addOrder($order_type, $order_amount, $order_price) {
  * Cancel a specific order.
  * @method cancelOrder
  * @param  int      $order_id 	Id of the order
- * @return array    			Direct resulf of the '<market>/money/order/cancel' call
+ * @return array    			Direct result of the '<market>/money/order/cancel' call
  */
 
 function cancelOrder($order_id) {
@@ -172,10 +172,10 @@ function cancelOrder($order_id) {
 }
 
 /**
- * Fetch information about an specific order
+ * Fetch information about a specific order
  * @method orderInfo
  * @param  int    $order_id 	Id of the order
- * @return array            	Direct resulf of the '<market>/money/order/result' call
+ * @return array            	Direct result of the '<market>/money/order/result' call
  */
 
 function orderInfo($order_id) {
@@ -192,7 +192,7 @@ function orderInfo($order_id) {
 /**
  * Fetch complete orderbook
  * @method fullDepth
- * @return array            	Direct resulf of the '<market>/money/depth/full' call
+ * @return array            	Direct result of the '<market>/money/depth/full' call
  */
 
 function fullDepth() {
@@ -229,7 +229,7 @@ function getLastDepositAddress() {
 }
 
 /**
- * Get the last 1000 trades that where executed before an specific trade_id
+ * Get the last 1000 trades that where executed before a specific trade_id
  * @method fetchTrades
  * @param  int      $trade_id    id of the trade
  * @return array                 array of last 1000 executed trades.

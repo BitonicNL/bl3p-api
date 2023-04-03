@@ -9,6 +9,7 @@
   2. Orderbook
   3. Last 1000 trades
   4. Trade history
+  5. Withdrawal fees 
 
 ## 1 - Introduction
 
@@ -241,4 +242,41 @@ ___
 >```
 >The volume of the datapoint
 >```
+>___
+
+## 2.5 - Withdrawal fees
+
+### Call
+
+```text
+withdrawal_fees
+```
+
+### Request
+
+```
+There are no specific parameters required for this call.
+```
+
+### Response
+
+`data` array
+```
+Array of withdrawal fees. F.e: 
+{
+    "data":{
+        "BTC":{
+            "mainnet":{
+                "low":"0.00000680",
+                "medium":"0.00005000",
+                "high":"0.00010000"
+            },
+            "lightning":"0.00000005"
+        },
+        "EUR":{
+            "sepa":"1.00000000"
+        }
+    }
+}
+```
 >___
