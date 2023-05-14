@@ -1,0 +1,17 @@
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\example.exe.config
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\example.exe
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\example.pdb
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\example.xml
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Flurl.dll
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Flurl.Http.dll
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Flurl.xml
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Flurl.Http.xml
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.vbprojResolveAssemblyReference.cache
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.Resources.resources
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.vbproj.GenerateResource.Cache
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.vbproj.CoreCompileInputs.cache
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.exe
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.xml
+C:\Users\Jeroen\Documents\visual studio 2017\Projects\example\example\obj\Debug\example.pdb
